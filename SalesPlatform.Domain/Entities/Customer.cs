@@ -1,4 +1,5 @@
 ﻿using SalesPlatform.Domain.Common;
+using SalesPlatform.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +11,7 @@ namespace SalesPlatform.Domain.Entities
     public class Customer : AuditableEntity
     {
         public int Id { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public CustomerName CustomerName { get; set; }
         public string NIP { get; set; }
 
         //product 1:n

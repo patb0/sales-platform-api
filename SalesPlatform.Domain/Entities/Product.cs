@@ -1,5 +1,6 @@
 ﻿using SalesPlatform.Domain.Common;
 using SalesPlatform.Domain.Enums;
+using SalesPlatform.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,12 +14,10 @@ namespace SalesPlatform.Domain.Entities
         public int Id { get; set; }
         public ProductCondition Condition { get; set; }
         public ProductCategory Category { get; set; }
+        public ProductDetails ProductDetails { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }
         public int Quantity { get; set; }
-        public string ProducerName { get; set; }
-        public string Country { get; set; }
-        public string Color { get; set; }
         public string Description { get; set; }
         public bool VAT { get; set; }
         //to do:
