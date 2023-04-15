@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Persistence\Configurations\" />
-    <Folder Include="Services\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SalesPlatform.Application\SalesPlatform.Application.csproj" />
     <ProjectReference Include="..\SalesPlatform.Domain\SalesPlatform.Domain.csproj" />
   </ItemGroup>
 

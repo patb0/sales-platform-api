@@ -32,7 +32,6 @@ namespace SalesPlatform.Infrastructure.Persistence
                 {
                 }
             );
-
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using SalesPlatform.Domain.ValueObjects;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +9,7 @@ namespace SalesPlatform.Domain.Entities
     public class Contact
     {
         public int Id { get; set; }
-        public Email Email { get; set; }
+        public string Email { get; set; }
         public string PhoneNumber { get; set; }
 
         //1:1
