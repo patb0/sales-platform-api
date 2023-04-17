@@ -16,13 +16,17 @@ namespace SalesPlatform.Infrastructure.Persistence.Configurations
             //fluent api
             builder.HasKey(a => a.Id);
 
-            builder.HasOne(b => b.Customer)
-                .WithMany(b => b.Products)
-                .IsRequired();
+            builder.Property(a => a.Id)
+                .ValueGeneratedOnAdd()
+                .UseIdentityColumn();
 
-            builder.HasMany(c => c.Opinions)
-                .WithOne(c => c.Product)
-                .IsRequired(false);
+            //builder.HasOne(b => b.Customer)
+            //    .WithMany(b => b.Products)
+            //    .IsRequired();
+
+            //builder.HasMany(c => c.Opinions)
+            //    .WithOne(c => c.Product)
+            //    .IsRequired(false);
 
             builder.OwnsOne(d => d.ProductDetails)
                 .Property(d => d.ProducerName)

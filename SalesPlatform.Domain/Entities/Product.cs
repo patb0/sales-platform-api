@@ -14,7 +14,7 @@ namespace SalesPlatform.Domain.Entities
         public int Id { get; set; }
         public ProductCondition Condition { get; set; }
         public ProductCategory Category { get; set; }
-        public ProductDetails ProductDetails { get; set; }
+        public ProductDetail ProductDetails { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }
         public int Quantity { get; set; }
@@ -24,11 +24,9 @@ namespace SalesPlatform.Domain.Entities
         //-photos (main, gallery)
 
 
-        //-customerId N:1
         public int CustomerId { get; set; }
         public Customer Customer { get; set; }
 
-        //-opinions 1:N
         public ICollection<Opinion> Opinions { get; set; }
     }
 }

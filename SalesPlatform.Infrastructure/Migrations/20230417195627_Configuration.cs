@@ -1,21 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace SalesPlatform.Infrastructure.Migrations
 {
-    public partial class EntitiesConfiguration : Migration
+    public partial class Configuration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Opinions_Products_ProductId",
-                table: "Opinions");
-
-            migrationBuilder.DropColumn(
-                name: "Email",
-                table: "Contacts");
-
             migrationBuilder.RenameColumn(
                 name: "ProducerName",
                 table: "Products",
@@ -40,6 +33,11 @@ namespace SalesPlatform.Infrastructure.Migrations
                 name: "FirstName",
                 table: "Customers",
                 newName: "CustomerName_FirstName");
+
+            migrationBuilder.RenameColumn(
+                name: "Email",
+                table: "Contacts",
+                newName: "EmailAddress");
 
             migrationBuilder.AlterColumn<bool>(
                 name: "VAT",
@@ -76,6 +74,38 @@ namespace SalesPlatform.Infrastructure.Migrations
                 nullable: false,
                 oldClrType: typeof(string),
                 oldType: "nvarchar(max)");
+
+            migrationBuilder.AlterColumn<string>(
+                name: "ModifiedBy",
+                table: "Products",
+                type: "nvarchar(max)",
+                nullable: true,
+                oldClrType: typeof(string),
+                oldType: "nvarchar(max)");
+
+            migrationBuilder.AlterColumn<DateTime>(
+                name: "Modified",
+                table: "Products",
+                type: "datetime2",
+                nullable: true,
+                oldClrType: typeof(DateTime),
+                oldType: "datetime2");
+
+            migrationBuilder.AlterColumn<string>(
+                name: "InactivatedBy",
+                table: "Products",
+                type: "nvarchar(max)",
+                nullable: true,
+                oldClrType: typeof(string),
+                oldType: "nvarchar(max)");
+
+            migrationBuilder.AlterColumn<DateTime>(
+                name: "Inactivated",
+                table: "Products",
+                type: "datetime2",
+                nullable: true,
+                oldClrType: typeof(DateTime),
+                oldType: "datetime2");
 
             migrationBuilder.AlterColumn<string>(
                 name: "Description",
@@ -132,6 +162,38 @@ namespace SalesPlatform.Infrastructure.Migrations
                 oldType: "nvarchar(max)");
 
             migrationBuilder.AlterColumn<string>(
+                name: "ModifiedBy",
+                table: "Customers",
+                type: "nvarchar(max)",
+                nullable: true,
+                oldClrType: typeof(string),
+                oldType: "nvarchar(max)");
+
+            migrationBuilder.AlterColumn<DateTime>(
+                name: "Modified",
+                table: "Customers",
+                type: "datetime2",
+                nullable: true,
+                oldClrType: typeof(DateTime),
+                oldType: "datetime2");
+
+            migrationBuilder.AlterColumn<string>(
+                name: "InactivatedBy",
+                table: "Customers",
+                type: "nvarchar(max)",
+                nullable: true,
+                oldClrType: typeof(string),
+                oldType: "nvarchar(max)");
+
+            migrationBuilder.AlterColumn<DateTime>(
+                name: "Inactivated",
+                table: "Customers",
+                type: "datetime2",
+                nullable: true,
+                oldClrType: typeof(DateTime),
+                oldType: "datetime2");
+
+            migrationBuilder.AlterColumn<string>(
                 name: "CustomerName_LastName",
                 table: "Customers",
                 type: "nvarchar(20)",
@@ -157,22 +219,6 @@ namespace SalesPlatform.Infrastructure.Migrations
                 nullable: false,
                 oldClrType: typeof(string),
                 oldType: "nvarchar(max)");
-
-            migrationBuilder.AddColumn<string>(
-                name: "Email_Domain",
-                table: "Contacts",
-                type: "nvarchar(20)",
-                maxLength: 20,
-                nullable: false,
-                defaultValue: "");
-
-            migrationBuilder.AddColumn<string>(
-                name: "Email_UserName",
-                table: "Contacts",
-                type: "nvarchar(20)",
-                maxLength: 20,
-                nullable: false,
-                defaultValue: "");
 
             migrationBuilder.AlterColumn<string>(
                 name: "ZipCode",
@@ -201,11 +247,10 @@ namespace SalesPlatform.Infrastructure.Migrations
                 oldClrType: typeof(string),
                 oldType: "nvarchar(max)");
 
-            migrationBuilder.AlterColumn<string>(
+            migrationBuilder.AlterColumn<int>(
                 name: "Country",
                 table: "Addresses",
-                type: "nvarchar(20)",
-                maxLength: 20,
+                type: "int",
                 nullable: false,
                 oldClrType: typeof(string),
                 oldType: "nvarchar(max)");
@@ -218,29 +263,10 @@ namespace SalesPlatform.Infrastructure.Migrations
                 nullable: false,
                 oldClrType: typeof(string),
                 oldType: "nvarchar(max)");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Opinions_Products_ProductId",
-                table: "Opinions",
-                column: "ProductId",
-                principalTable: "Products",
-                principalColumn: "Id");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Opinions_Products_ProductId",
-                table: "Opinions");
-
-            migrationBuilder.DropColumn(
-                name: "Email_Domain",
-                table: "Contacts");
-
-            migrationBuilder.DropColumn(
-                name: "Email_UserName",
-                table: "Contacts");
-
             migrationBuilder.RenameColumn(
                 name: "ProductDetails_ProducerName",
                 table: "Products",
@@ -265,6 +291,11 @@ namespace SalesPlatform.Infrastructure.Migrations
                 name: "CustomerName_FirstName",
                 table: "Customers",
                 newName: "FirstName");
+
+            migrationBuilder.RenameColumn(
+                name: "EmailAddress",
+                table: "Contacts",
+                newName: "Email");
 
             migrationBuilder.AlterColumn<bool>(
                 name: "VAT",
@@ -301,6 +332,46 @@ namespace SalesPlatform.Infrastructure.Migrations
                 oldClrType: typeof(string),
                 oldType: "nvarchar(20)",
                 oldMaxLength: 20);
+
+            migrationBuilder.AlterColumn<string>(
+                name: "ModifiedBy",
+                table: "Products",
+                type: "nvarchar(max)",
+                nullable: false,
+                defaultValue: "",
+                oldClrType: typeof(string),
+                oldType: "nvarchar(max)",
+                oldNullable: true);
+
+            migrationBuilder.AlterColumn<DateTime>(
+                name: "Modified",
+                table: "Products",
+                type: "datetime2",
+                nullable: false,
+                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                oldClrType: typeof(DateTime),
+                oldType: "datetime2",
+                oldNullable: true);
+
+            migrationBuilder.AlterColumn<string>(
+                name: "InactivatedBy",
+                table: "Products",
+                type: "nvarchar(max)",
+                nullable: false,
+                defaultValue: "",
+                oldClrType: typeof(string),
+                oldType: "nvarchar(max)",
+                oldNullable: true);
+
+            migrationBuilder.AlterColumn<DateTime>(
+                name: "Inactivated",
+                table: "Products",
+                type: "datetime2",
+                nullable: false,
+                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                oldClrType: typeof(DateTime),
+                oldType: "datetime2",
+                oldNullable: true);
 
             migrationBuilder.AlterColumn<string>(
                 name: "Description",
@@ -365,6 +436,46 @@ namespace SalesPlatform.Infrastructure.Migrations
                 oldNullable: true);
 
             migrationBuilder.AlterColumn<string>(
+                name: "ModifiedBy",
+                table: "Customers",
+                type: "nvarchar(max)",
+                nullable: false,
+                defaultValue: "",
+                oldClrType: typeof(string),
+                oldType: "nvarchar(max)",
+                oldNullable: true);
+
+            migrationBuilder.AlterColumn<DateTime>(
+                name: "Modified",
+                table: "Customers",
+                type: "datetime2",
+                nullable: false,
+                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                oldClrType: typeof(DateTime),
+                oldType: "datetime2",
+                oldNullable: true);
+
+            migrationBuilder.AlterColumn<string>(
+                name: "InactivatedBy",
+                table: "Customers",
+                type: "nvarchar(max)",
+                nullable: false,
+                defaultValue: "",
+                oldClrType: typeof(string),
+                oldType: "nvarchar(max)",
+                oldNullable: true);
+
+            migrationBuilder.AlterColumn<DateTime>(
+                name: "Inactivated",
+                table: "Customers",
+                type: "datetime2",
+                nullable: false,
+                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                oldClrType: typeof(DateTime),
+                oldType: "datetime2",
+                oldNullable: true);
+
+            migrationBuilder.AlterColumn<string>(
                 name: "LastName",
                 table: "Customers",
                 type: "nvarchar(max)",
@@ -390,13 +501,6 @@ namespace SalesPlatform.Infrastructure.Migrations
                 oldClrType: typeof(string),
                 oldType: "nvarchar(15)",
                 oldMaxLength: 15);
-
-            migrationBuilder.AddColumn<string>(
-                name: "Email",
-                table: "Contacts",
-                type: "nvarchar(max)",
-                nullable: false,
-                defaultValue: "");
 
             migrationBuilder.AlterColumn<string>(
                 name: "ZipCode",
@@ -430,9 +534,8 @@ namespace SalesPlatform.Infrastructure.Migrations
                 table: "Addresses",
                 type: "nvarchar(max)",
                 nullable: false,
-                oldClrType: typeof(string),
-                oldType: "nvarchar(20)",
-                oldMaxLength: 20);
+                oldClrType: typeof(int),
+                oldType: "int");
 
             migrationBuilder.AlterColumn<string>(
                 name: "City",
@@ -442,14 +545,6 @@ namespace SalesPlatform.Infrastructure.Migrations
                 oldClrType: typeof(string),
                 oldType: "nvarchar(20)",
                 oldMaxLength: 20);
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Opinions_Products_ProductId",
-                table: "Opinions",
-                column: "ProductId",
-                principalTable: "Products",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
         }
     }
 }

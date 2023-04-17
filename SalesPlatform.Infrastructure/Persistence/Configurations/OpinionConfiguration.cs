@@ -15,8 +15,13 @@ namespace SalesPlatform.Infrastructure.Persistence.Configurations
         {
             builder.HasKey(a => a.Id);
 
-            builder.HasOne(b => b.Product)
-                .WithMany(b => b.Opinions);
+            builder.Property(a => a.Id)
+                .ValueGeneratedOnAdd()
+                .UseIdentityColumn();
+
+            //builder.HasOne(b => b.Product)
+            //    .WithMany(b => b.Opinions)
+            //    .HasForeignKey(b => b.ProductId);
 
             builder.Property(c => c.Comment)
                 .HasMaxLength(100)

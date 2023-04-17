@@ -15,13 +15,17 @@ namespace SalesPlatform.Infrastructure.Persistence.Configurations
         {
             builder.HasKey(a => a.Id);
 
-            builder.HasOne(b => b.Customer)
-                .WithOne(b => b.Address);
+            builder.Property(a => a.Id)
+                .ValueGeneratedOnAdd()
+                .UseIdentityColumn();
 
-            builder.Property(c => c.Country)
-                .HasColumnType("nvarchar(20)")
-                .HasMaxLength(20)
-                .IsRequired();
+            //builder.HasOne<Customer>(b => b.Customer)
+            //    .WithOne(b => b.Address);
+
+            //builder.Property(c => c.Country)
+            //    .HasColumnType("nvarchar(20)")
+            //    .HasMaxLength(20)
+            //    .IsRequired();
 
             builder.Property(d => d.City)
                 .HasColumnType("nvarchar(20)")

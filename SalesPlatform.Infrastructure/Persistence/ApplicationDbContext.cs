@@ -19,6 +19,12 @@ namespace SalesPlatform.Infrastructure.Persistence
             _dateTime = dateTime;
         }
 
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Address> Addresses { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
+        public DbSet<Opinion> Opinions { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //added entities configuration during excecuting
@@ -26,13 +32,7 @@ namespace SalesPlatform.Infrastructure.Persistence
             modelBuilder.SeedData();
         }
 
-        public DbSet<Product> Products { get; set; }
-        public DbSet<Customer> Customers { get; set; }
-        public DbSet<Address> Addresses { get; set; }
-        public DbSet<Contact> Contacts { get; set; }
-        public DbSet<Opinion> Opinions { get; set; }
-
-        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
+        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
             //entity tracker + auto uzupelnianie
             foreach (var entry in ChangeTracker.Entries<AuditableEntity>())
@@ -58,7 +58,7 @@ namespace SalesPlatform.Infrastructure.Persistence
                         break;
                 }
             }
-            return base.SaveChangesAsync(cancellationToken);
+            return await base.SaveChangesAsync(cancellationToken);
         }
     }
 }

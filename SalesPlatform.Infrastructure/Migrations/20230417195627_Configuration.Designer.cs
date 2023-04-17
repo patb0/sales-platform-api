@@ -12,8 +12,8 @@ using SalesPlatform.Infrastructure.Persistence;
 namespace SalesPlatform.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230415203551_EntitiesConfiguration")]
-    partial class EntitiesConfiguration
+    [Migration("20230417195627_Configuration")]
+    partial class Configuration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -37,10 +37,8 @@ namespace SalesPlatform.Infrastructure.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
-                    b.Property<string>("Country")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                    b.Property<int>("Country")
+                        .HasColumnType("int");
 
                     b.Property<string>("FlatNumber")
                         .IsRequired()
@@ -69,6 +67,10 @@ namespace SalesPlatform.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("EmailAddress")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
@@ -101,18 +103,16 @@ namespace SalesPlatform.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("Inactivated")
+                    b.Property<DateTime?>("Inactivated")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("InactivatedBy")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("Modified")
+                    b.Property<DateTime?>("Modified")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ModifiedBy")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NIP")
@@ -187,18 +187,16 @@ namespace SalesPlatform.Infrastructure.Migrations
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
 
-                    b.Property<DateTime>("Inactivated")
+                    b.Property<DateTime?>("Inactivated")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("InactivatedBy")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("Modified")
+                    b.Property<DateTime?>("Modified")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ModifiedBy")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -230,35 +228,6 @@ namespace SalesPlatform.Infrastructure.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("SalesPlatform.Domain.Entities.Contact", b =>
-                {
-                    b.OwnsOne("SalesPlatform.Domain.ValueObjects.Email", "Email", b1 =>
-                        {
-                            b1.Property<int>("ContactId")
-                                .HasColumnType("int");
-
-                            b1.Property<string>("Domain")
-                                .IsRequired()
-                                .HasMaxLength(20)
-                                .HasColumnType("nvarchar(20)");
-
-                            b1.Property<string>("UserName")
-                                .IsRequired()
-                                .HasMaxLength(20)
-                                .HasColumnType("nvarchar(20)");
-
-                            b1.HasKey("ContactId");
-
-                            b1.ToTable("Contacts");
-
-                            b1.WithOwner()
-                                .HasForeignKey("ContactId");
-                        });
-
-                    b.Navigation("Email")
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("SalesPlatform.Domain.Entities.Customer", b =>
                 {
                     b.HasOne("SalesPlatform.Domain.Entities.Address", "Address")
@@ -273,7 +242,7 @@ namespace SalesPlatform.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.OwnsOne("SalesPlatform.Domain.ValueObjects.CustomerName", "CustomerName", b1 =>
+                    b.OwnsOne("SalesPlatform.Domain.ValueObjects.PersonName", "CustomerName", b1 =>
                         {
                             b1.Property<int>("CustomerId")
                                 .HasColumnType("int");
@@ -308,7 +277,9 @@ namespace SalesPlatform.Infrastructure.Migrations
                 {
                     b.HasOne("SalesPlatform.Domain.Entities.Product", "Product")
                         .WithMany("Opinions")
-                        .HasForeignKey("ProductId");
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Product");
                 });
@@ -321,7 +292,7 @@ namespace SalesPlatform.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.OwnsOne("SalesPlatform.Domain.ValueObjects.ProductDetails", "ProductDetails", b1 =>
+                    b.OwnsOne("SalesPlatform.Domain.ValueObjects.ProductDetail", "ProductDetails", b1 =>
                         {
                             b1.Property<int>("ProductId")
                                 .HasColumnType("int");

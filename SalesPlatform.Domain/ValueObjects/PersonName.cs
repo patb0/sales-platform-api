@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace SalesPlatform.Domain.ValueObjects
 {
-    public class CustomerName : ValueObject
+    public class PersonName : ValueObject
     {
-        public string FirstName { get; private set; }
-        public string LastName { get; private set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
 
-        public CustomerName(string firstName, string lastName)
+        public PersonName(string firstName, string lastName)
         {
             FirstName = firstName;
             LastName = lastName;

@@ -1,4 +1,5 @@
 ﻿using SalesPlatform.Domain.Common;
+using SalesPlatform.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace SalesPlatform.Domain.ValueObjects
 {
-    public class ProductDetails : ValueObject
+    public class ProductDetail : ValueObject
     {
-        public string ProducerName { get; private set; }
-        public string Country { get; private set; }
-        public string Color { get; private set; }
+        public string ProducerName { get; set; }
+        public string Country { get; set; }
+        public string Color { get; set; }
 
-        public ProductDetails(string producerName, string country, string color)
+        public ProductDetail(string producerName, string country, string color)
         {
             ProducerName = producerName;
             Country = country;

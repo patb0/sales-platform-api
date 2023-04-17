@@ -15,18 +15,22 @@ namespace SalesPlatform.Infrastructure.Persistence.Configurations
         {
             builder.HasKey(a => a.Id);
 
-            builder.HasOne(b => b.Customer)
-                .WithOne(b => b.Contact);
+            builder.Property(a => a.Id)
+                .ValueGeneratedOnAdd()
+                .UseIdentityColumn();
 
-            builder.OwnsOne(c => c.Email)
-                .Property(c => c.UserName)
-                .HasMaxLength(20)
-                .IsRequired();
+            //builder.HasOne(b => b.Customer)
+            //    .WithOne(b => b.Contact);
 
-            builder.OwnsOne(d => d.Email)
-                .Property(d => d.Domain)
-                .HasMaxLength(20)
-                .IsRequired();
+            //builder.OwnsOne(c => c.Email)
+            //    .Property(c => c.UserName)
+            //    .HasMaxLength(20)
+            //    .IsRequired();
+
+            //builder.OwnsOne(d => d.Email)
+            //    .Property(d => d.Domain)
+            //    .HasMaxLength(20)
+            //    .IsRequired();
 
             builder.Property(e => e.PhoneNumber)
                 .HasMaxLength(15)

@@ -16,22 +16,31 @@ namespace SalesPlatform.Infrastructure.Persistence.Configurations
             //fluent api
             builder.HasKey(a => a.Id);
 
-            builder.HasOne(b => b.Address)
-                .WithOne(b => b.Customer);
+            builder.Property(a => a.Id)
+                .ValueGeneratedOnAdd()
+                .UseIdentityColumn();
 
-            builder.HasOne(c => c.Contact)
-                .WithOne(c => c.Customer);
+            //builder.HasOne<Address>(b => b.Address)
+            //    .WithOne(b => b.Customer)
+            //    .HasForeignKey<Customer>(b => b.AddressId);
 
-            builder.HasMany(d => d.Products)
-                .WithOne(d => d.Customer);
+            //builder.HasOne<Contact>(c => c.Contact)
+            //    .WithOne(c => c.Customer)
+            //    .HasForeignKey<Customer>(c => c.ContactId);
+
+            //builder.HasMany(d => d.Products)
+            //    .WithOne(d => d.Customer)
+            //    .HasForeignKey(p => p.CustomerId);
 
             builder.OwnsOne(e => e.CustomerName)
                 .Property(e => e.FirstName)
+                .HasColumnName("FirstName")
                 .HasMaxLength(20)
                 .IsRequired();
 
             builder.OwnsOne(f => f.CustomerName)
                 .Property(f => f.LastName)
+                .HasColumnName("LastName")
                 .HasMaxLength(20)
                 .IsRequired();
 
