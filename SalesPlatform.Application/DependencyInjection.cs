@@ -16,6 +16,7 @@ namespace SalesPlatform.Application
         public static IServiceCollection ApplicationRegister(this IServiceCollection services)
         {
             services.AddMediatR(Assembly.GetExecutingAssembly());
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             return services;
         }

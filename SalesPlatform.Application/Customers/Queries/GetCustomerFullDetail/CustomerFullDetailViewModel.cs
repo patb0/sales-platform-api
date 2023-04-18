@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SalesPlatform.Application.Customers.Queries.GetCustomerDetail
+namespace SalesPlatform.Application.Customers.Queries.GetCustomerFullDetail
 {
-    public class CustomerDetailViewModel
+    public class CustomerFullDetailViewModel
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
