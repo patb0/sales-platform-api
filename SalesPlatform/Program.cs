@@ -1,4 +1,5 @@
 using SalesPlatform.Infrastructure;
+using SalesPlatform.Application;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +12,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Add dependency injection
-builder.Services.RegisterInfrastructure(builder.Configuration);
+builder.Services.ApplicationRegister();
+builder.Services.InfrastructureRegister(builder.Configuration);
 
 var app = builder.Build();
 

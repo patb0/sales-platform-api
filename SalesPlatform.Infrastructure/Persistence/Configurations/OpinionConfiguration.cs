@@ -19,10 +19,6 @@ namespace SalesPlatform.Infrastructure.Persistence.Configurations
                 .ValueGeneratedOnAdd()
                 .UseIdentityColumn();
 
-            //builder.HasOne(b => b.Product)
-            //    .WithMany(b => b.Opinions)
-            //    .HasForeignKey(b => b.ProductId);
-
             builder.Property(c => c.Comment)
                 .HasMaxLength(100)
                 .IsRequired(false);

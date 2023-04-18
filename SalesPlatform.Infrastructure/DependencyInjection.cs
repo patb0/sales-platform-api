@@ -15,12 +15,13 @@ namespace SalesPlatform.Infrastructure
 {
     public static class DependencyInjection
     {
-        public static IServiceCollection RegisterInfrastructure(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection InfrastructureRegister(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("SalesPlatformConnection")));
 
             services.AddTransient<IDateTime, DateTimeService>();
+            services.AddTransient<IApplicationDbContext, ApplicationDbContext>();
 
             return services;
         }

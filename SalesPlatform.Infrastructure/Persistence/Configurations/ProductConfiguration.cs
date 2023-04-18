@@ -20,14 +20,6 @@ namespace SalesPlatform.Infrastructure.Persistence.Configurations
                 .ValueGeneratedOnAdd()
                 .UseIdentityColumn();
 
-            //builder.HasOne(b => b.Customer)
-            //    .WithMany(b => b.Products)
-            //    .IsRequired();
-
-            //builder.HasMany(c => c.Opinions)
-            //    .WithOne(c => c.Product)
-            //    .IsRequired(false);
-
             builder.OwnsOne(d => d.ProductDetails)
                 .Property(d => d.ProducerName)
                 .HasMaxLength(20)

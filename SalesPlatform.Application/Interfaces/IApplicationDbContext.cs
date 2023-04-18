@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SalesPlatform.Infrastructure.Persistence
+namespace SalesPlatform.Application.Interfaces
 {
     public interface IApplicationDbContext
     {

@@ -19,14 +19,6 @@ namespace SalesPlatform.Infrastructure.Persistence.Configurations
                 .ValueGeneratedOnAdd()
                 .UseIdentityColumn();
 
-            //builder.HasOne<Customer>(b => b.Customer)
-            //    .WithOne(b => b.Address);
-
-            //builder.Property(c => c.Country)
-            //    .HasColumnType("nvarchar(20)")
-            //    .HasMaxLength(20)
-            //    .IsRequired();
-
             builder.Property(d => d.City)
                 .HasColumnType("nvarchar(20)")
                 .HasMaxLength(20)

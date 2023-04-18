@@ -20,18 +20,6 @@ namespace SalesPlatform.Infrastructure.Persistence.Configurations
                 .ValueGeneratedOnAdd()
                 .UseIdentityColumn();
 
-            //builder.HasOne<Address>(b => b.Address)
-            //    .WithOne(b => b.Customer)
-            //    .HasForeignKey<Customer>(b => b.AddressId);
-
-            //builder.HasOne<Contact>(c => c.Contact)
-            //    .WithOne(c => c.Customer)
-            //    .HasForeignKey<Customer>(c => c.ContactId);
-
-            //builder.HasMany(d => d.Products)
-            //    .WithOne(d => d.Customer)
-            //    .HasForeignKey(p => p.CustomerId);
-
             builder.OwnsOne(e => e.CustomerName)
                 .Property(e => e.FirstName)
                 .HasColumnName("FirstName")
