@@ -8,17 +8,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SalesPlatform.Application.Customers.Queries.GetCustomerDetail
+namespace SalesPlatform.Application.Customers.Queries.GetCustomerFullDetail
 {
-    public class GetCustomerDetailQueryHandler : IRequestHandler<GetCustomerDetailQuery, CustomerDetailViewModel>
+    public class GetCustomerFullDetailQueryHandler : IRequestHandler<GetCustomerFullDetailQuery, CustomerFullDetailViewModel>
     {
         private readonly IApplicationDbContext _context;
-        public GetCustomerDetailQueryHandler(IApplicationDbContext context)
+        public GetCustomerFullDetailQueryHandler(IApplicationDbContext context)
         {
             _context = context;
         }
 
-        public async Task<CustomerDetailViewModel> Handle(GetCustomerDetailQuery request, CancellationToken cancellationToken)
+        public async Task<CustomerFullDetailViewModel> Handle(GetCustomerFullDetailQuery request, CancellationToken cancellationToken)
         {
             var customer = await _context.Customers
                 .Include(c => c.Address)
@@ -27,7 +27,7 @@ namespace SalesPlatform.Application.Customers.Queries.GetCustomerDetail
                 .Where(c => c.Id == request.CustomerId)
                 .FirstOrDefaultAsync(cancellationToken);
 
-            var vm = new CustomerDetailViewModel
+            var vm = new CustomerFullDetailViewModel
             {
                 FirstName = customer.CustomerName.FirstName,
                 LastName = customer.CustomerName.LastName,

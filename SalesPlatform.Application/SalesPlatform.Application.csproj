@@ -8,10 +8,11 @@
 
   <ItemGroup>
     <Folder Include="Customers\Commands\" />
-    <Folder Include="Products\" />
+    <Folder Include="Products\Commands\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="MediatR" Version="11.1.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.16" />
