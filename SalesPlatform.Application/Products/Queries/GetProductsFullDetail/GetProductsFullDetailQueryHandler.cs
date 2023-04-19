@@ -2,7 +2,9 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using SalesPlatform.Application.Interfaces;
+using SalesPlatform.Application.Products.Queries.Common;
 using SalesPlatform.Domain.Entities;
+using SalesPlatform.Domain.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +27,11 @@ namespace SalesPlatform.Application.Products.Queries.GetProductsFullDetail
         public async Task<ProductFullDetailDto> Handle(GetProductsFullDetailQuery request, CancellationToken cancellationToken)
         {
             var products = await _context.Products.Include(p => p.ProductDetails).ToListAsync();
+
+            if(products == null)
+            {
+                throw new NotFoundProductException();
+            }
 
             var productsVm = _mapper.Map<ICollection<ProductFullDetailViewModel>>(products);
                 

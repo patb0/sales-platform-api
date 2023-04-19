@@ -9,5 +9,6 @@ namespace SalesPlatform.Application.Products.Queries.GetProductsFullDetail
 {
     public class GetProductsFullDetailQuery : IRequest<ProductFullDetailDto>
     {
+
     }
 }

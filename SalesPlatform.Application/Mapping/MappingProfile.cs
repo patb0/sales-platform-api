@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
-using SalesPlatform.Application.Products.Queries.GetProductsBasicDetail;
-using SalesPlatform.Application.Products.Queries.GetProductsFullDetail;
+using SalesPlatform.Application.Products.Queries.Common;
 using SalesPlatform.Domain.Entities;
 using System;
 using System.Collections.Generic;

@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using SalesPlatform.Application.Products.Queries.GetProductBasicDetail;
 using SalesPlatform.Application.Products.Queries.GetProductsFullDetail;
+using SalesPlatform.Application.Products.Queries.GetProductFullDetailById;
+using SalesPlatform.Application.Products.Queries.GetProductBasicDetailById;
 
 namespace SalesPlatform.Controllers
 {
@@ -17,11 +19,27 @@ namespace SalesPlatform.Controllers
         }
 
         [HttpGet("basic")]
-        public async Task<ActionResult> GetProductsBasicDetai()
+        public async Task<ActionResult> GetProductsBasicDetail()
         {
             var products = await Mediator.Send(new GetProductsBasicDetailQuery());
 
             return Ok(products);
+        }
+
+        [HttpGet("{id}/full")]
+        public async Task<ActionResult> GetProductFullDetailById(int id)
+        {
+            var product = await Mediator.Send(new GetProductFullDetailByIdQuery { ProductId = id});
+            
+            return Ok(product);
+        }
+
+        [HttpGet("{id}/basic")]
+        public async Task<ActionResult> GetProductBasicDetailById(int id)
+        {
+            var product = await Mediator.Send(new GetProductBasicDetailByIdQuery { ProductId = id });
+
+            return Ok(product);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using SalesPlatform.Application.Products.Queries.GetProductsBasicDetail;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +10,6 @@ namespace SalesPlatform.Application.Products.Queries.GetProductBasicDetail
 {
     public class GetProductsBasicDetailQuery : IRequest<ProductBasicDetailDto>
     {
+
     }
 }

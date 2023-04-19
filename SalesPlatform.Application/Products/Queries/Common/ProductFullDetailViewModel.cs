@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SalesPlatform.Application.Products.Queries.GetProductsFullDetail
+namespace SalesPlatform.Application.Products.Queries.Common
 {
     public class ProductFullDetailViewModel
     {
+        //public int Id { get; set; }
         public string ProducerName { get; set; }
         public string Country { get; set; }
         public string Color { get; set; }

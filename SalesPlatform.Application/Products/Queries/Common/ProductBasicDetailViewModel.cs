@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SalesPlatform.Application.Products.Queries.GetProductsBasicDetail
+namespace SalesPlatform.Application.Products.Queries.Common
 {
     public class ProductBasicDetailViewModel
     {
