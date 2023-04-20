@@ -28,7 +28,7 @@ namespace SalesPlatform.Application.Products.Queries.GetProductsFullDetail
         {
             var products = await _context.Products.Include(p => p.ProductDetails).ToListAsync();
 
-            if(products == null)
+            if(products.Count() == 0)
             {
                 throw new NotFoundProductException();
             }

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using SalesPlatform.Application.Products.Queries.Common;
+using SalesPlatform.Application.Products.Queries.GetProductBasicDetailBySearchKey;
 using SalesPlatform.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,8 @@ namespace SalesPlatform.Application.Mapping
                 .ForMember(c => c.Country, opt => opt.MapFrom(src => src.ProductDetails.Country));
 
             CreateMap<Product, ProductBasicDetailViewModel>();
+            CreateMap<Product, ProductDetailBySearchKeyViewModel>()
+                .ForMember(a => a.ProducerName, opt => opt.MapFrom(src => src.ProductDetails.ProducerName));
         }
     }
 }

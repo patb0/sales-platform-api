@@ -9,7 +9,7 @@ namespace SalesPlatform.Application.Products.Queries.Common
 {
     public class ProductFullDetailViewModel
     {
-        //public int Id { get; set; }
+        public int Id { get; set; }
         public string ProducerName { get; set; }
         public string Country { get; set; }
         public string Color { get; set; }

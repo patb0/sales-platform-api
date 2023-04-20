@@ -27,7 +27,7 @@ namespace SalesPlatform.Application.Products.Queries.GetProductBasicDetail
         {
             var products = await _context.Products.ToListAsync();
 
-            if(products == null)
+            if(products.Count() == 0)
             {
                 throw new NotFoundProductException();
             }
