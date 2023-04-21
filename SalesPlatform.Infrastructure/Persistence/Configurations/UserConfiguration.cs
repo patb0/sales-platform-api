@@ -9,24 +9,23 @@ using System.Threading.Tasks;
 
 namespace SalesPlatform.Infrastructure.Persistence.Configurations
 {
-    public class CustomerConfiguration : IEntityTypeConfiguration<Customer>
+    public class UserConfiguration : IEntityTypeConfiguration<User>
     {
-        public void Configure(EntityTypeBuilder<Customer> builder)
+        public void Configure(EntityTypeBuilder<User> builder)
         {
             //fluent api
-            builder.HasKey(a => a.Id);
+            builder.HasKey(x => x.Id);
 
             builder.Property(a => a.Id)
-                .ValueGeneratedOnAdd()
-                .UseIdentityColumn();
+                .ValueGeneratedOnAdd();
 
-            builder.OwnsOne(e => e.CustomerName)
+            builder.OwnsOne(e => e.UserName)
                 .Property(e => e.FirstName)
                 .HasColumnName("FirstName")
                 .HasMaxLength(20)
                 .IsRequired();
 
-            builder.OwnsOne(f => f.CustomerName)
+            builder.OwnsOne(f => f.UserName)
                 .Property(f => f.LastName)
                 .HasColumnName("LastName")
                 .HasMaxLength(20)

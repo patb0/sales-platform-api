@@ -8,13 +8,11 @@ using System.Threading.Tasks;
 
 namespace SalesPlatform.Domain.Entities
 {
-    public class Opinion
+    public class Role
     {
         public int Id { get; set; }
-        public string Comment { get; set; }
-        public int Rating { get; set; } 
+        public string Name { get; set; }
 
-        public int ProductId { get; set; }
-        public Product Product { get; set; }
+        public ICollection<Account> Accounts { get; set; }
     }
 }

@@ -20,10 +20,12 @@ namespace SalesPlatform.Infrastructure.Persistence
         }
 
         public DbSet<Product> Products { get; set; }
-        public DbSet<Customer> Customers { get; set; }
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Opinion> Opinions { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Account> Accounts { get; set; }
+        public DbSet<Role> Roles { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -32,12 +34,11 @@ namespace SalesPlatform.Infrastructure.Persistence
             modelBuilder.SeedData();
         }
 
-        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
+        public int SaveChangesWithAuditable()
         {
-            //entity tracker + auto uzupelnianie
             foreach (var entry in ChangeTracker.Entries<AuditableEntity>())
             {
-                switch(entry.State)
+                switch (entry.State)
                 {
                     case EntityState.Added:
                         entry.Entity.Created = _dateTime.Now;
@@ -58,7 +59,36 @@ namespace SalesPlatform.Infrastructure.Persistence
                         break;
                 }
             }
-            return await base.SaveChangesAsync(cancellationToken);
+            return base.SaveChanges();
         }
+
+        //public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
+        //{
+        //    //entity tracker + auto uzupelnianie
+        //    foreach (var entry in ChangeTracker.Entries<AuditableEntity>())
+        //    {
+        //        switch(entry.State)
+        //        {
+        //            case EntityState.Added:
+        //                entry.Entity.Created = _dateTime.Now;
+        //                entry.Entity.CreatedBy = "Admin";
+        //                entry.Entity.StatusId = 1;
+        //                break;
+        //            case EntityState.Modified:
+        //                entry.Entity.Modified = _dateTime.Now;
+        //                entry.Entity.ModifiedBy = "Admin";
+        //                break;
+        //            case EntityState.Deleted:
+        //                entry.Entity.Modified = _dateTime.Now;
+        //                entry.Entity.ModifiedBy = "Admin";
+        //                entry.Entity.Inactivated = _dateTime.Now;
+        //                entry.Entity.InactivatedBy = "Admin";
+        //                entry.Entity.StatusId = 0;
+        //                entry.State = EntityState.Modified;
+        //                break;
+        //        }
+        //    }
+        //    //return base.SaveChangesAsync(cancellationToken);
+        //}
     }
 }

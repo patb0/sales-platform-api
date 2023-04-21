@@ -13,25 +13,26 @@ namespace SalesPlatform.Infrastructure.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<Product> builder)
         {
-            //fluent api
-            builder.HasKey(a => a.Id);
+            builder.HasKey(x => x.Id);
 
             builder.Property(a => a.Id)
-                .ValueGeneratedOnAdd()
-                .UseIdentityColumn();
+                .ValueGeneratedOnAdd();
 
             builder.OwnsOne(d => d.ProductDetails)
                 .Property(d => d.ProducerName)
+                .HasColumnName("ProducerName")
                 .HasMaxLength(20)
                 .IsRequired();
 
             builder.OwnsOne(e => e.ProductDetails)
                 .Property(e => e.Country)
+                .HasColumnName("Country")
                 .HasMaxLength(20)
                 .IsRequired(false);
 
             builder.OwnsOne(f => f.ProductDetails)
                 .Property(f => f.Color)
+                .HasColumnName("Color")
                 .HasMaxLength(20)
                 .IsRequired(false);
 

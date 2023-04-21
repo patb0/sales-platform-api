@@ -1,4 +1,4 @@
-﻿using SalesPlatform.Domain.Enums;
+﻿using SalesPlatform.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,16 +9,14 @@ using System.Threading.Tasks;
 
 namespace SalesPlatform.Domain.Entities
 {
-    public class Address
+    public class Account
     {
         public int Id { get; set; }
-        public Country Country { get; set; }
-        public string City { get; set; } 
-        public string ZipCode { get; set; } 
-        public string Street { get; set; } 
-        public string FlatNumber { get; set; } 
+        public string Login { get; set; }
+        public string PasswordHash { get; set; }
 
-
+        public int RoleId { get; set; }
+        public Role Role { get; set; }
         public User User { get; set; }
     }
 }

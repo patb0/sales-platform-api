@@ -13,11 +13,10 @@ namespace SalesPlatform.Infrastructure.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<Address> builder)
         {
-            builder.HasKey(a => a.Id);
+            builder.HasKey(x => x.Id);
 
             builder.Property(a => a.Id)
-                .ValueGeneratedOnAdd()
-                .UseIdentityColumn();
+                .ValueGeneratedOnAdd();
 
             builder.Property(d => d.City)
                 .HasColumnType("nvarchar(20)")

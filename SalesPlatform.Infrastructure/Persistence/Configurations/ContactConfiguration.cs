@@ -13,11 +13,10 @@ namespace SalesPlatform.Infrastructure.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<Contact> builder)
         {
-            builder.HasKey(a => a.Id);
+            builder.HasKey(x => x.Id);
 
             builder.Property(a => a.Id)
-                .ValueGeneratedOnAdd()
-                .UseIdentityColumn();
+                .ValueGeneratedOnAdd();
 
             builder.Property(b => b.EmailAddress)
                 .HasMaxLength(50)
