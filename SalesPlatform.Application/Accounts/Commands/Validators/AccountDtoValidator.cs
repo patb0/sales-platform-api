@@ -17,12 +17,14 @@ namespace SalesPlatform.Application.Accounts.Commands.Validators
             _context = context;
 
             RuleFor(x => x.Login)
-                .NotEmpty()
-                .MaximumLength(20);
+                .MinimumLength(6)
+                .MaximumLength(20)
+                .NotEmpty();
 
             RuleFor(x => x.Password)
-                .NotEmpty()
-                .MinimumLength(6);
+                .MinimumLength(6)
+                .MaximumLength(20)
+                .NotEmpty();
 
             RuleFor(x => x.PasswordConfirm).Equal(y => y.Password);
 

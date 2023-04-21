@@ -1,18 +1,46 @@
 using SalesPlatform.Infrastructure;
 using SalesPlatform.Application;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using SalesPlatform.Application.Accounts.Commands.LoginUser;
+using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
+//Add configuration for JWT authentication
+
+
+builder.Services.AddAuthentication(option =>
+{
+    option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    option.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    option.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(o =>
+    {
+        o.RequireHttpsMetadata = false;
+        o.SaveToken = true;
+        o.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidIssuer = builder.Configuration["Authentication: JwtIssuer"],
+            ValidAudience = builder.Configuration["Authentication: JwtIssuer"],
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Authentication:JwtKey"])),
+            //ValidateIssuer = true,
+            //ValidateAudience = true,
+            //ValidateLifetime = false,
+            //ValidateIssuerSigningKey = true,
+        };
+});
+
 // Add services to the container.
-
-
 builder.Services.AddControllers();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Add dependency injection
-builder.Services.ApplicationRegister();
+builder.Services.ApplicationRegister(builder.Configuration);
 builder.Services.InfrastructureRegister(builder.Configuration);
 
 var app = builder.Build();
@@ -26,6 +54,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
