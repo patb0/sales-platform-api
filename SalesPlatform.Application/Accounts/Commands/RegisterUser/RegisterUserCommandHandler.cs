@@ -27,37 +27,44 @@ namespace SalesPlatform.Application.Accounts.Commands.RegisterUser
         }
         public async Task<int> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
         {
-            //add user address
-            var newAddress = _mapper.Map<Address>(request.AddressDto);
-
-            //add user contact
-            var newContact = _mapper.Map<Contact>(request.ContactDto);
-
-            //user account (login + password)
-            var newAccount = _mapper.Map<Account>(request.AccountDto);
-
-            var hashedPassword = _passwordHasher.HashPassword(newAccount, request.AccountDto.Password);
-            newAccount.PasswordHash = hashedPassword;
-            newAccount.RoleId = 2;
-
-            //add up enties to db
-            _context.AddRange(new List<object>
+            var ac = new Account()
             {
-                newAddress, newContact, newAccount,
-            });
+                Login = request.AccountDto.Login,
+            };
 
-            _context.SaveChanges();
+            return 1;
+            ////add user address
+            //var newAddress = _mapper.Map<Address>(request.AddressDto);
 
-            //user with simple data and all foreign keys
-            var newUser = _mapper.Map<User>(request.UserDto);
-            newUser.AddressId = newAddress.Id;
-            newUser.ContactId = newContact.Id;
-            newUser.AccountId = newAccount.Id;
+            ////add user contact
+            //var newContact = _mapper.Map<Contact>(request.ContactDto);
 
-            _context.Users.Add(newUser);
-            _context.SaveChangesWithAuditable();
+            ////user account (login + password)
+            //var newAccount = _mapper.Map<Account>(request.AccountDto);
 
-            return newUser.Id;
+            //var hashedPassword = _passwordHasher.HashPassword(newAccount, request.AccountDto.Password);
+            //newAccount.PasswordHash = hashedPassword;
+            //newAccount.RoleId = 2;
+
+
+            ////add up enties to db
+            //_context.AddRange(new List<object>
+            //{
+            //    newAddress, newContact, newAccount,
+            //});
+
+            //_context.SaveChanges();
+
+            ////user with simple data and all foreign keys
+            //var newUser = _mapper.Map<User>(request.UserDto);
+            //newUser.AddressId = newAddress.Id;
+            //newUser.ContactId = newContact.Id;
+            //newUser.AccountId = newAccount.Id;
+
+            //_context.Users.Add(newUser);
+            //_context.SaveChangesWithAuditable();
+
+            //return newUser.Id;
         }
     }
 }

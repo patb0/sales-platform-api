@@ -30,7 +30,7 @@ builder.Services.AddAuthentication(option =>
             //ValidateLifetime = false,
             //ValidateIssuerSigningKey = true,
         };
-});
+    });
 
 // Add services to the container.
 builder.Services.AddControllers();

@@ -22,7 +22,7 @@ namespace SalesPlatform.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult> Login([FromBody]LoginUserCommand loginUser)
+        public async Task<ActionResult> Login([FromBody] LoginUserCommand loginUser)
         {
             var result = await Mediator.Send(loginUser);
 
