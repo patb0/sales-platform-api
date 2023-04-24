@@ -28,5 +28,13 @@ namespace SalesPlatform.Controllers
 
             return Ok(result);
         }
+
+        [HttpGet("user")]
+        public async Task<ActionResult<string>> GetCurrentUser()
+        {
+            var currentUserName = HttpContext.User.Identity.Name;
+            
+            return Ok(currentUserName);
+        }
     }
 }

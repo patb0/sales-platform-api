@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SalesPlatform.Application.Products.Queries.Common
+namespace SalesPlatform.Application.Products.Queries.ViewModel
 {
     public class ProductFullDetailViewModel
     {
