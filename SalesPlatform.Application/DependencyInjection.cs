@@ -12,6 +12,7 @@ using SalesPlatform.Application.Interfaces;
 using SalesPlatform.Domain.Entities;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -68,6 +69,8 @@ namespace SalesPlatform.Application
                     //ValidateIssuerSigningKey = true,
                 };
             });
+
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
             return services;
         }

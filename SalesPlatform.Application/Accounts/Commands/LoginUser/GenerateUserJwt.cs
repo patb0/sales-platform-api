@@ -17,10 +17,13 @@ namespace SalesPlatform.Application.Accounts.Commands.LoginUser
         {
             var claims = new List<Claim>()
             {
-                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim(ClaimTypes.Name, $"{user.UserName.FirstName} {user.UserName.LastName}"),
-                new Claim(ClaimTypes.Role, user.Account.Role.Name),
-                new Claim("DateOfRegistration", user.Created.ToString("yyyy-MM-dd")),
+                //new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                //new Claim(ClaimTypes.Name, $"{user.UserName.FirstName} {user.UserName.LastName}"),
+                //new Claim(ClaimTypes.Role, user.Account.Role.Name),
+                new Claim("id", user.Id.ToString()),
+                new Claim("name", $"{user.UserName.FirstName} {user.UserName.LastName}"),
+                new Claim("role", user.Account.Role.Name),
+                new Claim("registration", user.Created.ToString("yyyy-MM-dd")),
             };
 
             //private key
@@ -38,6 +41,8 @@ namespace SalesPlatform.Application.Accounts.Commands.LoginUser
                 signingCredentials: cred);
 
             var tokenHandler = new JwtSecurityTokenHandler();
+            tokenHandler.OutboundClaimTypeMap.Clear();
+            tokenHandler.InboundClaimTypeMap.Clear();
 
             return tokenHandler.WriteToken(token);
         }

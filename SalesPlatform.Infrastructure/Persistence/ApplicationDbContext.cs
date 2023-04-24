@@ -14,9 +14,11 @@ namespace SalesPlatform.Infrastructure.Persistence
     public class ApplicationDbContext : DbContext, IApplicationDbContext
     {
         private readonly IDateTime _dateTime;
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, IDateTime dateTime) : base(options)
+        private readonly ICurrentUserService _currentUser;
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, IDateTime dateTime, ICurrentUserService currentUser) : base(options)
         {
             _dateTime = dateTime;
+            _currentUser = currentUser;
         }
 
         public DbSet<Product> Products { get; set; }
@@ -42,18 +44,18 @@ namespace SalesPlatform.Infrastructure.Persistence
                 {
                     case EntityState.Added:
                         entry.Entity.Created = _dateTime.Now;
-                        entry.Entity.CreatedBy = "Admin";
+                        entry.Entity.CreatedBy = _currentUser.UserName;
                         entry.Entity.StatusId = 1;
                         break;
                     case EntityState.Modified:
                         entry.Entity.Modified = _dateTime.Now;
-                        entry.Entity.ModifiedBy = "Admin";
+                        entry.Entity.ModifiedBy = _currentUser.UserName;
                         break;
                     case EntityState.Deleted:
                         entry.Entity.Modified = _dateTime.Now;
-                        entry.Entity.ModifiedBy = "Admin";
+                        entry.Entity.ModifiedBy = _currentUser.UserName;
                         entry.Entity.Inactivated = _dateTime.Now;
-                        entry.Entity.InactivatedBy = "Admin";
+                        entry.Entity.InactivatedBy = _currentUser.UserName;
                         entry.Entity.StatusId = 0;
                         entry.State = EntityState.Modified;
                         break;

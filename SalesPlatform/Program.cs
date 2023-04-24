@@ -5,6 +5,9 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using SalesPlatform.Application.Accounts.Commands.LoginUser;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using SalesPlatform.Application.Interfaces;
+using SalesPlatform.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -43,6 +46,10 @@ builder.Services.AddSwaggerGen();
 // Add dependency injection
 builder.Services.ApplicationRegister(builder.Configuration);
 builder.Services.InfrastructureRegister(builder.Configuration);
+
+//Add dependency to get value from jwt token
+builder.Services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.TryAddScoped(typeof(ICurrentUserService), typeof(CurrentUserService));
 
 var app = builder.Build();
 

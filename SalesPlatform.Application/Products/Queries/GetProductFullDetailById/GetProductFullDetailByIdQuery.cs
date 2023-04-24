@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using SalesPlatform.Application.Products.Queries.Common;
+using SalesPlatform.Application.Products.Queries.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,4 +1,4 @@
-﻿using SalesPlatform.Application.Products.Queries.Common;
+﻿using SalesPlatform.Application.Products.Queries.ViewModel;
 
 namespace SalesPlatform.Application.Products.Queries.GetProductBasicDetailBySearchKey
 {

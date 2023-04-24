@@ -2,7 +2,7 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using SalesPlatform.Application.Interfaces;
-using SalesPlatform.Application.Products.Queries.Common;
+using SalesPlatform.Application.Products.Queries.ViewModel;
 using SalesPlatform.Domain.Exceptions;
 using System;
 using System.Collections.Generic;

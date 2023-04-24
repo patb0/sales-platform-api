@@ -6,6 +6,7 @@ using SalesPlatform.Application.Products.Queries.GetProductFullDetailById;
 using SalesPlatform.Application.Products.Queries.GetProductBasicDetailById;
 using SalesPlatform.Application.Products.Queries.GetProductBasicDetailBySearchKey;
 using Microsoft.AspNetCore.Authorization;
+using SalesPlatform.Application.Products.Commands.AddProduct;
 
 namespace SalesPlatform.Controllers
 {
@@ -50,6 +51,14 @@ namespace SalesPlatform.Controllers
             var products = await Mediator.Send(new GetProductDetailBySearchKeyQuery { SearchKey = searchKey });
 
             return Ok(products);
+        }
+
+        [HttpPost("add")]
+        public async Task<ActionResult> AddProduct(AddProductCommand addProduct)
+        {
+            var result = await Mediator.Send(addProduct);
+
+            return Ok(result);
         }
     }
 }
