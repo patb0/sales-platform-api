@@ -5,6 +5,7 @@ using SalesPlatform.Application.Products.Queries.GetProductsFullDetail;
 using SalesPlatform.Application.Products.Queries.GetProductFullDetailById;
 using SalesPlatform.Application.Products.Queries.GetProductBasicDetailById;
 using SalesPlatform.Application.Products.Queries.GetProductBasicDetailBySearchKey;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SalesPlatform.Controllers
 {

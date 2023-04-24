@@ -11,7 +11,6 @@ using System.Threading.Tasks;
 
 namespace SalesPlatform.Application.Accounts.Commands.LoginUser
 {
-    
     public static class GenerateUserJwt
     {        
         public static string CreateToken(User user, AuthenticationSettings authenticationSettings)
@@ -20,7 +19,8 @@ namespace SalesPlatform.Application.Accounts.Commands.LoginUser
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(ClaimTypes.Name, $"{user.UserName.FirstName} {user.UserName.LastName}"),
-                new Claim(ClaimTypes.Role, user.Account.RoleId.ToString()),
+                new Claim(ClaimTypes.Role, user.Account.Role.Name),
+                new Claim("DateOfRegistration", user.Created.ToString("yyyy-MM-dd")),
             };
 
             //private key
@@ -30,8 +30,9 @@ namespace SalesPlatform.Application.Accounts.Commands.LoginUser
             //expires
             var expires = DateTime.Now.AddDays(Convert.ToDouble(authenticationSettings.JwtExpireDays));
 
-            var token = new JwtSecurityToken(authenticationSettings.JwtIssuer,
-                authenticationSettings.JwtIssuer,
+            var token = new JwtSecurityToken(
+                issuer : authenticationSettings.JwtIssuer,
+                audience: authenticationSettings.JwtIssuer,
                 claims,
                 expires: expires,
                 signingCredentials: cred);

@@ -9,28 +9,29 @@ using Microsoft.Extensions.Configuration;
 var builder = WebApplication.CreateBuilder(args);
 
 //Add configuration for JWT authentication
-
-
-builder.Services.AddAuthentication(option =>
-{
-    option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    option.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-    option.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-}).AddJwtBearer(o =>
-    {
-        o.RequireHttpsMetadata = false;
-        o.SaveToken = true;
-        o.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidIssuer = builder.Configuration["Authentication: JwtIssuer"],
-            ValidAudience = builder.Configuration["Authentication: JwtIssuer"],
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Authentication:JwtKey"])),
-            //ValidateIssuer = true,
-            //ValidateAudience = true,
-            //ValidateLifetime = false,
-            //ValidateIssuerSigningKey = true,
-        };
-    });
+//builder.Services.AddAuthentication(option =>
+//{
+//    option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+//    option.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+//    //option.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+//}).AddJwtBearer(o =>
+//    {
+//        o.RequireHttpsMetadata = false;
+//        o.SaveToken = true;
+//        o.TokenValidationParameters = new TokenValidationParameters
+//        {
+//            ValidateIssuer = true,
+//            ValidIssuer = builder.Configuration["Authentication: JwtIssuer"],
+//            ValidateAudience = false,
+//            ValidAudience = builder.Configuration["Authentication: JwtIssuer"],
+//            ValidateIssuerSigningKey = true,
+//            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Authentication:JwtKey"])),
+//            //ValidateIssuer = true,
+//            //ValidateAudience = true,
+//            //ValidateLifetime = false,
+//            //ValidateIssuerSigningKey = true,
+//        };
+//    });
 
 // Add services to the container.
 builder.Services.AddControllers();

@@ -32,16 +32,24 @@ namespace SalesPlatform.Application.Accounts.Commands.LoginUser
 
         public async Task<string> Handle(LoginUserCommand request, CancellationToken cancellationToken)
         {
-            //check if user exist in db
             var user = await _context.Users
-                .Include(x => x.Account)
-                .Where(r => r.Account.Login == request.Login)
-                .FirstOrDefaultAsync();
+                .Include("Account.Role")
+                .Select(x => new User
+                { 
+                    Id = x.Id-1,
+                    Account = x.Account,
+                    UserName = x.UserName,
+                    Created = x.Created,
+                })
+                .AsNoTracking()
+                .FirstOrDefaultAsync(x => x.Account.Login == request.Login);
+
 
             if (user == null)
             {
                 throw new InvalidUserDataException();
             }
+
 
             //check password
             var checkPassword = _passwordHasher.VerifyHashedPassword(user, user.Account.PasswordHash, request.Password);
@@ -50,30 +58,6 @@ namespace SalesPlatform.Application.Accounts.Commands.LoginUser
             {
                 throw new InvalidUserDataException();
             }
-
-            //var claims = new List<Claim>()
-            //{
-            //    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-            //    new Claim(ClaimTypes.Name, $"{user.UserName.FirstName} {user.UserName.LastName}"),
-            //    new Claim(ClaimTypes.Role, user.Account.RoleId.ToString()),
-            //};
-
-            ////private key
-            //var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_authenticationSettings.JwtKey));
-            ////credentials
-            //var cred = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-            ////expires
-            //var expires = DateTime.Now.AddDays(Convert.ToDouble(_authenticationSettings.JwtExpireDays));
-
-            //var token = new JwtSecurityToken(_authenticationSettings.JwtIssuer,
-            //    _authenticationSettings.JwtIssuer,
-            //    claims,
-            //    expires: expires,
-            //    signingCredentials: cred);
-
-            //var tokenHandler = new JwtSecurityTokenHandler();
-
-            //return tokenHandler.WriteToken(token);
 
             var userToken = GenerateUserJwt.CreateToken(user, _authenticationSettings);
 
