@@ -10,5 +10,7 @@ namespace SalesPlatform.Application.Interfaces
     {
         string UserName { get; set; }
         bool IsAuthenticated { get; set; }
+        int UserId { get; set; }
+        string UserRole { get; set; }
     }
 }

@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using SalesPlatform.Application.Accounts.Commands.LoginUser;
 using SalesPlatform.Application.Accounts.Commands.RegisterUser;
 using SalesPlatform.Application.Accounts.Queries.GetCurrentUser;
+using SalesPlatform.Application.Accounts.Queries.GetCurrentUserDetail;
+using SalesPlatform.Application.Accounts.Queries.GetCurrentUserId;
+using SalesPlatform.Application.Accounts.Queries.GetCurrentUserRole;
 using SalesPlatform.Application.Interfaces;
 using SalesPlatform.Domain.Entities;
 using SalesPlatform.Domain.ValueObjects;
@@ -31,21 +34,36 @@ namespace SalesPlatform.Controllers
             return Ok(result);
         }
 
-        [HttpGet("user")]
-        public async Task<ActionResult<string>> GetCurrentUser()
+        [HttpGet("current-user-name")]
+        public async Task<ActionResult<string>> GetCurrentUserName()
         {
             var currentUserName = await Mediator.Send(new GetCurrentUserNameQuery());
             
             return Ok(currentUserName);
         }
 
-        [HttpGet("test")]
-        public async Task<ActionResult<int>> Test()
+        [HttpGet("current-user-id")]
+        public async Task<ActionResult<int>> GetCurrentUserId()
         {
-            //zmień
-            var user = HttpContext.User.FindFirst("id").Value;
+            var currentUserId = await Mediator.Send(new GetCurrentUserIdQuery());
 
-            return 1;
+            return Ok(currentUserId);
+        }
+
+        [HttpGet("current-user-role")]
+        public async Task<ActionResult<string>> GetCurrentUserRole()
+        {
+            var currentUserRole = await Mediator.Send(new GetCurrentUserRoleQuery());
+
+            return Ok(currentUserRole);
+        }
+
+        [HttpGet("current-user")]
+        public async Task<ActionResult> GetCurrentUserDetails()
+        {
+            var currentUserDetail = await Mediator.Send(new GetCurrentUserDetailQuery());
+
+            return Ok(currentUserDetail);
         }
     }
 }

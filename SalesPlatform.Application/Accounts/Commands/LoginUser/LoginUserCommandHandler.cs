@@ -36,7 +36,7 @@ namespace SalesPlatform.Application.Accounts.Commands.LoginUser
                 .Include("Account.Role")
                 .Select(x => new User
                 { 
-                    Id = x.Id-1,
+                    Id = x.Id,
                     Account = x.Account,
                     UserName = x.UserName,
                     Created = x.Created,
