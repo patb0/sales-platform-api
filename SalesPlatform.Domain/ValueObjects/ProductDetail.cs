@@ -10,9 +10,9 @@ namespace SalesPlatform.Domain.ValueObjects
 {
     public class ProductDetail : ValueObject
     {
-        public string ProducerName { get; set; }
-        public string Country { get; set; }
-        public string Color { get; set; }
+        public string ProducerName { get; set; } = string.Empty;
+        public string Country { get; set; } = string.Empty;
+        public string Color { get; set; } = string.Empty;
 
         public ProductDetail(string producerName, string country, string color)
         {

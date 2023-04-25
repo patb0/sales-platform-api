@@ -19,7 +19,6 @@ namespace SalesPlatform.Application.Interfaces
         DbSet<Contact> Contacts { get; set; }
         DbSet<Opinion> Opinions { get; set; }
 
-        //Task<int> SaveChangesAsync(CancellationToken cancellationToken);
         int SaveChangesWithAuditable();
         int SaveChanges();
         void AddRange(IEnumerable<object> entities);

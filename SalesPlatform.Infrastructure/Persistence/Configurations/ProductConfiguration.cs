@@ -22,7 +22,7 @@ namespace SalesPlatform.Infrastructure.Persistence.Configurations
                 .Property(d => d.ProducerName)
                 .HasColumnName("ProducerName")
                 .HasMaxLength(20)
-                .IsRequired();
+                .IsRequired(false);
 
             builder.OwnsOne(e => e.ProductDetails)
                 .Property(e => e.Country)

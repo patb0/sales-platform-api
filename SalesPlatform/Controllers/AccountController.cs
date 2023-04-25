@@ -34,7 +34,7 @@ namespace SalesPlatform.Controllers
             return Ok(result);
         }
 
-        [HttpGet("current-user-name")]
+        [HttpGet("name")]
         public async Task<ActionResult<string>> GetCurrentUserName()
         {
             var currentUserName = await Mediator.Send(new GetCurrentUserNameQuery());
@@ -42,7 +42,7 @@ namespace SalesPlatform.Controllers
             return Ok(currentUserName);
         }
 
-        [HttpGet("current-user-id")]
+        [HttpGet("id")]
         public async Task<ActionResult<int>> GetCurrentUserId()
         {
             var currentUserId = await Mediator.Send(new GetCurrentUserIdQuery());
@@ -50,7 +50,7 @@ namespace SalesPlatform.Controllers
             return Ok(currentUserId);
         }
 
-        [HttpGet("current-user-role")]
+        [HttpGet("role")]
         public async Task<ActionResult<string>> GetCurrentUserRole()
         {
             var currentUserRole = await Mediator.Send(new GetCurrentUserRoleQuery());
@@ -58,7 +58,7 @@ namespace SalesPlatform.Controllers
             return Ok(currentUserRole);
         }
 
-        [HttpGet("current-user")]
+        [HttpGet("detail")]
         public async Task<ActionResult> GetCurrentUserDetails()
         {
             var currentUserDetail = await Mediator.Send(new GetCurrentUserDetailQuery());
