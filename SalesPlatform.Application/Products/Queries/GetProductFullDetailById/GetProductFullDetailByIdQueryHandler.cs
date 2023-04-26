@@ -25,7 +25,7 @@ namespace SalesPlatform.Application.Products.Queries.GetProductFullDetailById
         public async Task<ProductFullDetailViewModel> Handle(GetProductFullDetailByIdQuery request, CancellationToken cancellationToken)
         {
             var product = await _context.Products
-                .Include(p => p.ProductDetails)
+                .Include(p => p.ProductDetail)
                 .Where(i => i.Id == request.ProductId)
                 .FirstOrDefaultAsync(cancellationToken);
 

@@ -19,13 +19,15 @@ namespace SalesPlatform.Infrastructure.Persistence.Configurations
             builder.Property(a => a.Id)
                 .ValueGeneratedOnAdd();
 
+            //builder.OwnsOne(x => x.UserName);
+
             builder.OwnsOne(e => e.UserName)
                 .Property(e => e.FirstName)
                 .HasColumnName("FirstName")
                 .HasMaxLength(20)
                 .IsRequired();
 
-            builder.OwnsOne(f => f.UserName)
+            builder.OwnsOne(e => e.UserName)
                 .Property(f => f.LastName)
                 .HasColumnName("LastName")
                 .HasMaxLength(20)

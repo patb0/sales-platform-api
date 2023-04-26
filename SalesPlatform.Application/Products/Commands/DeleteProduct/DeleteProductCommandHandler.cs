@@ -20,10 +20,11 @@ namespace SalesPlatform.Application.Products.Commands.DeleteProduct
         public async Task<Unit> Handle(DeleteProductCommand request, CancellationToken cancellationToken)
         {
             var product = await _context.Products
+                .Include(i => i.ProductDetail)
                 .Where(x => x.Id == request.Id)
                 .FirstOrDefaultAsync(cancellationToken);
 
-            if (product == null) 
+            if (product == null || product.StatusId == 0) 
             {
                 throw new NotFoundProductException();
             }

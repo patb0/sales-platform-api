@@ -39,9 +39,9 @@ namespace SalesPlatform.Application.Products.Commands.UpdateProduct
 
             try
             {
-                productToUpdate.ProductDetails.ProducerName = request.Product.ProducerName;
-                productToUpdate.ProductDetails.Country = request.Product.Country;
-                productToUpdate.ProductDetails.Color = request.Product.Color;
+                productToUpdate.ProductDetail.ProducerName = request.Product.ProducerName;
+                productToUpdate.ProductDetail.Country = request.Product.Country;
+                productToUpdate.ProductDetail.Color = request.Product.Color;
                 productToUpdate.Name = request.Product.Name;
                 productToUpdate.Price = request.Product.Price;
                 productToUpdate.Description = request.Product.Description;

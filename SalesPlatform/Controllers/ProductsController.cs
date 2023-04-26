@@ -12,7 +12,7 @@ using SalesPlatform.Application.Products.Commands.DeleteProduct;
 
 namespace SalesPlatform.Controllers
 {
-    [Route("api/products")]
+    [Route("api/product")]
     public class ProductsController : ApiBaseController
     {
         [HttpGet("full-detail")]

@@ -2,6 +2,7 @@
 using SalesPlatform.Application.Interfaces;
 using SalesPlatform.Domain.Common;
 using SalesPlatform.Domain.Entities;
+using SalesPlatform.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +32,13 @@ namespace SalesPlatform.Infrastructure.Persistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //configure value objects in entities 
+            modelBuilder.Entity<Product>()
+                .OwnsOne(x => x.ProductDetail);
+
+            modelBuilder.Entity<User>()
+                .OwnsOne(x => x.UserName);
+
             //added entities configuration during excecuting
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
             modelBuilder.SeedData();

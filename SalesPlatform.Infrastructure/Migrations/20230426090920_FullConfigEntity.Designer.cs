@@ -12,8 +12,8 @@ using SalesPlatform.Infrastructure.Persistence;
 namespace SalesPlatform.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230425193059_TestForDelete")]
-    partial class TestForDelete
+    [Migration("20230426090920_FullConfigEntity")]
+    partial class FullConfigEntity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -49,29 +49,6 @@ namespace SalesPlatform.Infrastructure.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("Accounts");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Login = "patryk",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJaTsR64pp6Igk/NgiSK+R4ioUc9AUB375nT/1qv9yXNuYjjAiC+ZrI3sEhMLasdIQ==",
-                            RoleId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Login = "damian",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJaTsR64pp6Igk/NgiSK+R4ioUc9AUB375nT/1qv9yXNuYjjAiC+ZrI3sEhMLasdIQ==",
-                            RoleId = 2
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Login = "patrol",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJaTsR64pp6Igk/NgiSK+R4ioUc9AUB375nT/1qv9yXNuYjjAiC+ZrI3sEhMLasdIQ==",
-                            RoleId = 2
-                        });
                 });
 
             modelBuilder.Entity("SalesPlatform.Domain.Entities.Address", b =>
@@ -108,35 +85,6 @@ namespace SalesPlatform.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Addresses");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            City = "Warsaw",
-                            Country = 0,
-                            FlatNumber = "1a",
-                            Street = "Kwiatowa",
-                            ZipCode = "00-000"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            City = "London",
-                            Country = 1,
-                            FlatNumber = "19",
-                            Street = "Backer",
-                            ZipCode = "93-400"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            City = "London",
-                            Country = 1,
-                            FlatNumber = "19",
-                            Street = "Backer",
-                            ZipCode = "93-400"
-                        });
                 });
 
             modelBuilder.Entity("SalesPlatform.Domain.Entities.Contact", b =>
@@ -160,26 +108,6 @@ namespace SalesPlatform.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Contacts");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            EmailAddress = "patbog@mail.com",
-                            PhoneNumber = "123456789"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            EmailAddress = "damian@mail.com",
-                            PhoneNumber = "987654321"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            EmailAddress = "damian@mail.com",
-                            PhoneNumber = "987654321"
-                        });
                 });
 
             modelBuilder.Entity("SalesPlatform.Domain.Entities.Opinion", b =>
@@ -206,22 +134,6 @@ namespace SalesPlatform.Infrastructure.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("Opinions");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Comment = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-                            ProductId = 1,
-                            Rating = 5
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Comment = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-                            ProductId = 2,
-                            Rating = 3
-                        });
                 });
 
             modelBuilder.Entity("SalesPlatform.Domain.Entities.Product", b =>
@@ -292,38 +204,6 @@ namespace SalesPlatform.Infrastructure.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Products");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Category = 0,
-                            Condition = 0,
-                            Created = new DateTime(2023, 4, 25, 21, 30, 59, 319, DateTimeKind.Local).AddTicks(3654),
-                            CreatedBy = "Admin",
-                            Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-                            Name = "Product name1",
-                            Price = 500m,
-                            Quantity = 1,
-                            StatusId = 1,
-                            UserId = 1,
-                            VAT = true
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Category = 4,
-                            Condition = 0,
-                            Created = new DateTime(2023, 4, 25, 21, 30, 59, 319, DateTimeKind.Local).AddTicks(3664),
-                            CreatedBy = "Admin",
-                            Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-                            Name = "Product name2",
-                            Price = 200m,
-                            Quantity = 5,
-                            StatusId = 1,
-                            UserId = 1,
-                            VAT = false
-                        });
                 });
 
             modelBuilder.Entity("SalesPlatform.Domain.Entities.Role", b =>
@@ -341,18 +221,6 @@ namespace SalesPlatform.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Roles");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Admin"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "User"
-                        });
                 });
 
             modelBuilder.Entity("SalesPlatform.Domain.Entities.User", b =>
@@ -410,28 +278,6 @@ namespace SalesPlatform.Infrastructure.Migrations
                         .IsUnique();
 
                     b.ToTable("Users");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            AccountId = 1,
-                            AddressId = 1,
-                            ContactId = 1,
-                            Created = new DateTime(2023, 4, 25, 21, 30, 59, 319, DateTimeKind.Local).AddTicks(3344),
-                            CreatedBy = "Admin",
-                            StatusId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            AccountId = 2,
-                            AddressId = 2,
-                            ContactId = 2,
-                            Created = new DateTime(2023, 4, 25, 21, 30, 59, 319, DateTimeKind.Local).AddTicks(3375),
-                            CreatedBy = "Admin",
-                            StatusId = 1
-                        });
                 });
 
             modelBuilder.Entity("SalesPlatform.Domain.Entities.Account", b =>
@@ -464,7 +310,7 @@ namespace SalesPlatform.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.OwnsOne("SalesPlatform.Domain.ValueObjects.ProductDetail", "ProductDetails", b1 =>
+                    b.OwnsOne("SalesPlatform.Domain.ValueObjects.ProductDetail", "ProductDetail", b1 =>
                         {
                             b1.Property<int>("ProductId")
                                 .HasColumnType("int");
@@ -490,25 +336,9 @@ namespace SalesPlatform.Infrastructure.Migrations
 
                             b1.WithOwner()
                                 .HasForeignKey("ProductId");
-
-                            b1.HasData(
-                                new
-                                {
-                                    ProductId = 1,
-                                    Color = "Black",
-                                    Country = "Poland",
-                                    ProducerName = "Asus"
-                                },
-                                new
-                                {
-                                    ProductId = 2,
-                                    Color = "Red",
-                                    Country = "England",
-                                    ProducerName = "Pepco"
-                                });
                         });
 
-                    b.Navigation("ProductDetails")
+                    b.Navigation("ProductDetail")
                         .IsRequired();
 
                     b.Navigation("User");
@@ -557,20 +387,6 @@ namespace SalesPlatform.Infrastructure.Migrations
 
                             b1.WithOwner()
                                 .HasForeignKey("UserId");
-
-                            b1.HasData(
-                                new
-                                {
-                                    UserId = 1,
-                                    FirstName = "Patryk",
-                                    LastName = "Boguslawski"
-                                },
-                                new
-                                {
-                                    UserId = 2,
-                                    FirstName = "Damian",
-                                    LastName = "Boguslawski"
-                                });
                         });
 
                     b.Navigation("Account");

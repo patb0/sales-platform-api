@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using SalesPlatform.Application.Accounts.Commands.Common;
+using SalesPlatform.Application.Opinions.Queries;
 using SalesPlatform.Application.Products.Commands.AddProduct;
 using SalesPlatform.Application.Products.Queries.GetProductBasicDetailBySearchKey;
 using SalesPlatform.Application.Products.Queries.ViewModel;
@@ -19,20 +20,20 @@ namespace SalesPlatform.Application.Mapping
         {
             //product queries
             CreateMap<Product, ProductFullDetailViewModel>()
-                .ForMember(a => a.ProducerName, opt => opt.MapFrom(src => src.ProductDetails.ProducerName))
-                .ForMember(b => b.Color, opt => opt.MapFrom(src => src.ProductDetails.Color))
-                .ForMember(c => c.Country, opt => opt.MapFrom(src => src.ProductDetails.Country));
+                .ForMember(a => a.ProducerName, opt => opt.MapFrom(src => src.ProductDetail.ProducerName))
+                .ForMember(b => b.Color, opt => opt.MapFrom(src => src.ProductDetail.Color))
+                .ForMember(c => c.Country, opt => opt.MapFrom(src => src.ProductDetail.Country));
 
             CreateMap<Product, ProductBasicDetailViewModel>();
             CreateMap<Product, ProductDetailBySearchKeyViewModel>()
-                .ForMember(a => a.ProducerName, opt => opt.MapFrom(src => src.ProductDetails.ProducerName));
+                .ForMember(a => a.ProducerName, opt => opt.MapFrom(src => src.ProductDetail.ProducerName));
 
             //product commands
             CreateMap<AddProductCommand, Product>()
-                .ForPath(a => a.ProductDetails, opt => opt.MapFrom(src => new ProductDetail(src.ProducerName, src.Country, src.Color)));
-                //.ForMember(a => a.ProductDetails.ProducerName, opt => opt.MapFrom(src => src.ProducerName))
-                //.ForPath(b => b.ProductDetails.Country, opt => opt.MapFrom(src => src.Country))
-                //.ForPath(c => c.ProductDetails.Color, opt => opt.MapFrom(src => src.Color));
+                .ForPath(a => a.ProductDetail, opt => opt.MapFrom(src => new ProductDetail(src.ProducerName, src.Country, src.Color)));
+                //.ForMember(a => a.ProductDetail.ProducerName, opt => opt.MapFrom(src => src.ProducerName))
+                //.ForPath(b => b.ProductDetail.Country, opt => opt.MapFrom(src => src.Country))
+                //.ForPath(c => c.ProductDetail.Color, opt => opt.MapFrom(src => src.Color));
 
             //register user
             CreateMap<AddressDto, Address>();
@@ -41,7 +42,8 @@ namespace SalesPlatform.Application.Mapping
             CreateMap<UserDto, User>()
                 .ForPath(a => a.UserName, opt => opt.MapFrom(src => new PersonName(src.FirstName, src.LastName)));
 
-
+            //product opinions
+            CreateMap<Opinion, OpinionViewModel>();
         }
     }
 }

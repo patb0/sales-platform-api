@@ -57,6 +57,20 @@ namespace SalesPlatform.Infrastructure.Persistence
                         Login = "patrol",
                         PasswordHash = "AQAAAAIAAYagAAAAEJaTsR64pp6Igk/NgiSK+R4ioUc9AUB375nT/1qv9yXNuYjjAiC+ZrI3sEhMLasdIQ==",
                         RoleId = 2,
+                    },
+                    new Account
+                    {
+                        Id = 4,
+                        Login = "adam",
+                        PasswordHash = "AQAAAAIAAYagAAAAEJaTsR64pp6Igk/NgiSK+R4ioUc9AUB375nT/1qv9yXNuYjjAiC+ZrI3sEhMLasdIQ==",
+                        RoleId = 2,
+                    },
+                    new Account
+                    {
+                        Id = 5,
+                        Login = "kasia",
+                        PasswordHash = "AQAAAAIAAYagAAAAEJaTsR64pp6Igk/NgiSK+R4ioUc9AUB375nT/1qv9yXNuYjjAiC+ZrI3sEhMLasdIQ==",
+                        RoleId = 2,
                     });
             });
 
@@ -83,46 +97,47 @@ namespace SalesPlatform.Infrastructure.Persistence
                             ContactId = 2,
                             AddressId = 2,
                             AccountId = 2,
-                        }
-                        //,
-                        //new User()
-                        //{
-                        //    Id = 3,
-                        //    StatusId = 1,
-                        //    Created = DateTime.Now,
-                        //    CreatedBy = "Admin",
-                        //    ContactId = 3,
-                        //    AddressId = 3,
-                        //},
-                        //new User()
-                        //{
-                        //    Id = 4,
-                        //    StatusId = 1,
-                        //    Created = DateTime.Now,
-                        //    CreatedBy = "Admin",
-                        //    ContactId = 4,
-                        //    AddressId = 4,
-                        //},
-                        //new User()
-                        //{
-                        //    Id = 5,
-                        //    StatusId = 1,
-                        //    Created = DateTime.Now,
-                        //    CreatedBy = "Admin",
-                        //    ContactId = 5,
-                        //    AddressId = 5,
-                        //}
-                        );
+                        },
+                        new User()
+                        {
+                            Id = 3,
+                            StatusId = 1,
+                            Created = DateTime.Now,
+                            CreatedBy = "Admin",
+                            ContactId = 3,
+                            AddressId = 3,
+                            AccountId = 3,
+                        },
+                        new User()
+                        {
+                            Id = 4,
+                            StatusId = 1,
+                            Created = DateTime.Now,
+                            CreatedBy = "Admin",
+                            ContactId = 4,
+                            AddressId = 4,
+                            AccountId = 4,
+                        },
+                        new User()
+                        {
+                            Id = 5,
+                            StatusId = 1,
+                            Created = DateTime.Now,
+                            CreatedBy = "Admin",
+                            ContactId = 5,
+                            AddressId = 5,
+                            AccountId = 5,
+                        });
                     d.OwnsOne(d => d.UserName).HasData(
                         new { UserId = 1, FirstName = "Patryk", LastName = "Boguslawski" });
                     d.OwnsOne(d => d.UserName).HasData(
                         new { UserId = 2, FirstName = "Damian", LastName = "Boguslawski" });
-                    //d.OwnsOne(d => d.UserName).HasData(
-                    //    new { UserId = 3, FirstName = "Jan", LastName = "Kowalski" });
-                    //d.OwnsOne(d => d.UserName).HasData(
-                    //    new { UserId = 4, FirstName = "Adam", LastName = "Kozak" });
-                    //d.OwnsOne(d => d.UserName).HasData(
-                    //    new { UserId = 5, FirstName = "Katarzyna", LastName = "Szybka" });
+                    d.OwnsOne(d => d.UserName).HasData(
+                        new { UserId = 3, FirstName = "Jan", LastName = "Kowalski" });
+                    d.OwnsOne(d => d.UserName).HasData(
+                        new { UserId = 4, FirstName = "Adam", LastName = "Kozak" });
+                    d.OwnsOne(d => d.UserName).HasData(
+                        new { UserId = 5, FirstName = "Katarzyna", LastName = "Szybka" });
                 }
             );
 
@@ -147,27 +162,19 @@ namespace SalesPlatform.Infrastructure.Persistence
                             Id = 3,
                             PhoneNumber = "987654321",
                             EmailAddress = "damian@mail.com",
-                        }
-                        //,
-                        //new Contact
-                        //{
-                        //    Id = 3,
-                        //    PhoneNumber = "388499201",
-                        //    EmailAddress = "jan@mail.com",
-                        //},
-                        //new Contact
-                        //{
-                        //    Id = 4,
-                        //    PhoneNumber = "992003991",
-                        //    EmailAddress = "adas@pl.com",
-                        //},
-                        //new Contact
-                        //{
-                        //    Id = 5,
-                        //    PhoneNumber = "9908882991",
-                        //    EmailAddress = "kasia@xp.com",
-                        //}
-                        );
+                        },
+                        new Contact
+                        {
+                            Id = 4,
+                            PhoneNumber = "992003991",
+                            EmailAddress = "adas@pl.com",
+                        },
+                        new Contact
+                        {
+                            Id = 5,
+                            PhoneNumber = "9908882991",
+                            EmailAddress = "kasia@xp.com",
+                        });
                 }
             );
 
@@ -201,36 +208,25 @@ namespace SalesPlatform.Infrastructure.Persistence
                         City = "London",
                         Street = "Backer",
                         FlatNumber = "19",
-                    }
-                    //,
-                    //new Address
-                    //{
-                    //    Id = 3,
-                    //    Country = Domain.Enums.Country.Czech,
-                    //    ZipCode = "93-400",
-                    //    City = "Kreta",
-                    //    Street = "Backer",
-                    //    FlatNumber = "10/2",
-                    //},
-                    //new Address
-                    //{
-                    //    Id = 4,
-                    //    Country = Domain.Enums.Country.Norway,
-                    //    ZipCode = "93-400",
-                    //    City = "Oslo",
-                    //    Street = "Lorem",
-                    //    FlatNumber = "102a",
-                    //},
-                    //new Address
-                    //{
-                    //    Id = 5,
-                    //    Country = Domain.Enums.Country.Netherlands,
-                    //    ZipCode = "93-400",
-                    //    City = "Amsterdam",
-                    //    Street = "Lorem",
-                    //    FlatNumber = "88",
-                    //}
-                    );
+                    },
+                    new Address
+                    {
+                        Id = 4,
+                        Country = Domain.Enums.Country.Norway,
+                        ZipCode = "93-400",
+                        City = "Oslo",
+                        Street = "Lorem",
+                        FlatNumber = "102a",
+                    },
+                    new Address
+                    {
+                        Id = 5,
+                        Country = Domain.Enums.Country.Netherlands,
+                        ZipCode = "93-400",
+                        City = "Amsterdam",
+                        Street = "Lorem",
+                        FlatNumber = "88",
+                    });
             });
 
             //added products
@@ -266,81 +262,79 @@ namespace SalesPlatform.Infrastructure.Persistence
                         Quantity = 5,
                         Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
                         VAT = false,
-                    }
-                    //,
-                    //new Product
-                    //{
-                    //    Id = 3,
-                    //    StatusId = 1,
-                    //    Created = DateTime.Now,
-                    //    CreatedBy = "Admin",
-                    //    UserId = 2,
-                    //    Condition = Domain.Enums.ProductCondition.New,
-                    //    Category = Domain.Enums.ProductCategory.Automotive,
-                    //    Name = "Product name3",
-                    //    Price = 250,
-                    //    Quantity = 15,
-                    //    Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-                    //    VAT = false,
-                    //},
-                    //new Product
-                    //{
-                    //    Id = 4,
-                    //    StatusId = 1,
-                    //    Created = DateTime.Now,
-                    //    CreatedBy = "Admin",
-                    //    UserId = 3,
-                    //    Condition = Domain.Enums.ProductCondition.New,
-                    //    Category = Domain.Enums.ProductCategory.Fashion,
-                    //    Name = "Product name 4",
-                    //    Price = 99,
-                    //    Quantity = 1,
-                    //    Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-                    //    VAT = true,
-                    //},
-                    //new Product
-                    //{
-                    //    Id = 5,
-                    //    StatusId = 1,
-                    //    Created = DateTime.Now,
-                    //    CreatedBy = "Admin",
-                    //    UserId = 4,
-                    //    Condition = Domain.Enums.ProductCondition.New,
-                    //    Category = Domain.Enums.ProductCategory.Sports,
-                    //    Name = "Product name 5",
-                    //    Price = 23,
-                    //    Quantity = 99,
-                    //    Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-                    //    VAT = true,
-                    //},
-                    //new Product
-                    //{
-                    //    Id = 6,
-                    //    StatusId = 1,
-                    //    Created = DateTime.Now,
-                    //    CreatedBy = "Admin",
-                    //    UserId = 5,
-                    //    Condition = Domain.Enums.ProductCondition.New,
-                    //    Category = Domain.Enums.ProductCategory.Home,
-                    //    Name = "Product name 6",
-                    //    Price = 88,
-                    //    Quantity = 9,
-                    //    Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-                    //    VAT = false,
-                    //}
-                    );
-                d.OwnsOne(d => d.ProductDetails).HasData(
+                    },
+                    new Product
+                    {
+                        Id = 3,
+                        StatusId = 1,
+                        Created = DateTime.Now,
+                        CreatedBy = "Admin",
+                        UserId = 2,
+                        Condition = Domain.Enums.ProductCondition.New,
+                        Category = Domain.Enums.ProductCategory.Automotive,
+                        Name = "Product name3",
+                        Price = 250,
+                        Quantity = 15,
+                        Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+                        VAT = false,
+                    },
+                    new Product
+                    {
+                        Id = 4,
+                        StatusId = 1,
+                        Created = DateTime.Now,
+                        CreatedBy = "Admin",
+                        UserId = 3,
+                        Condition = Domain.Enums.ProductCondition.New,
+                        Category = Domain.Enums.ProductCategory.Fashion,
+                        Name = "Product name 4",
+                        Price = 99,
+                        Quantity = 1,
+                        Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+                        VAT = true,
+                    },
+                    new Product
+                    {
+                        Id = 5,
+                        StatusId = 1,
+                        Created = DateTime.Now,
+                        CreatedBy = "Admin",
+                        UserId = 4,
+                        Condition = Domain.Enums.ProductCondition.New,
+                        Category = Domain.Enums.ProductCategory.Sports,
+                        Name = "Product name 5",
+                        Price = 23,
+                        Quantity = 99,
+                        Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+                        VAT = true,
+                    },
+                    new Product
+                    {
+                        Id = 6,
+                        StatusId = 1,
+                        Created = DateTime.Now,
+                        CreatedBy = "Admin",
+                        UserId = 5,
+                        Condition = Domain.Enums.ProductCondition.New,
+                        Category = Domain.Enums.ProductCategory.Home,
+                        Name = "Product name 6",
+                        Price = 88,
+                        Quantity = 9,
+                        Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+                        VAT = false,
+                    });
+                d.OwnsOne(d => d.ProductDetail).HasData(
                     new { ProductId = 1, ProducerName = "Asus", Country = Domain.Enums.Country.Poland.ToString(), Color = "Black" });
-                d.OwnsOne(d => d.ProductDetails).HasData(
+                d.OwnsOne(d => d.ProductDetail).HasData(
                     new { ProductId = 2, ProducerName = "Pepco", Country = Domain.Enums.Country.England.ToString(), Color = "Red" });
-                //d.OwnsOne(d => d.ProductDetails).HasData(
-                //    new { ProductId = 3, ProducerName = "Sparco", Country = Domain.Enums.Country.Czech.ToString(), Color = "Blue" });
-                //d.OwnsOne(d => d.ProductDetails).HasData(
-                //    new { ProductId = 4, ProducerName = "Nike", Country = Domain.Enums.Country.Norway.ToString(), Color = "White" });
-                //d.OwnsOne(d => d.ProductDetails).HasData(
-                //    new { ProductId = 5, ProducerName = "Adidas", Country = Domain.Enums.Country.Finland.ToString(), Color = "Green" });
-                //d.OwnsOne(d => d.ProductDetails).HasData(
-                //    new { ProductId = 6, ProducerName = "Pepco", Country = Domain.Enums.Country.Denmark.ToString(), Color = "Purple" });
+                d.OwnsOne(d => d.ProductDetail).HasData(
+                    new { ProductId = 3, ProducerName = "Sparco", Country = Domain.Enums.Country.Czech.ToString(), Color = "Blue" });
+                d.OwnsOne(d => d.ProductDetail).HasData(
+                    new { ProductId = 4, ProducerName = "Nike", Country = Domain.Enums.Country.Norway.ToString(), Color = "White" });
+                d.OwnsOne(d => d.ProductDetail).HasData(
+                    new { ProductId = 5, ProducerName = "Adidas", Country = Domain.Enums.Country.Finland.ToString(), Color = "Green" });
+                d.OwnsOne(d => d.ProductDetail).HasData(
+                    new { ProductId = 6, ProducerName = "Pepco", Country = Domain.Enums.Country.Denmark.ToString(), Color = "Purple" });
             });
 
             //added opinions
@@ -360,30 +354,28 @@ namespace SalesPlatform.Infrastructure.Persistence
                         Comment = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
                         Rating = 3,
                         ProductId = 2,
-                    }
-                    //,
-                    //new Opinion
-                    //{
-                    //    Id = 3,
-                    //    Comment = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-                    //    Rating = 5,
-                    //    ProductId = 3,
-                    //},
-                    //new Opinion
-                    //{
-                    //    Id = 4,
-                    //    Comment = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-                    //    Rating = 5,
-                    //    ProductId = 4,
-                    //},
-                    //new Opinion
-                    //{
-                    //    Id = 5,
-                    //    Comment = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-                    //    Rating = 1,
-                    //    ProductId = 5,
-                    //}
-                    );
+                    },
+                    new Opinion
+                    {
+                        Id = 3,
+                        Comment = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+                        Rating = 5,
+                        ProductId = 3,
+                    },
+                    new Opinion
+                    {
+                        Id = 4,
+                        Comment = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+                        Rating = 5,
+                        ProductId = 4,
+                    },
+                    new Opinion
+                    {
+                        Id = 5,
+                        Comment = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+                        Rating = 1,
+                        ProductId = 5,
+                    });
             });
         }
     }

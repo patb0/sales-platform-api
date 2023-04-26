@@ -69,6 +69,20 @@ namespace SalesPlatform.Infrastructure.Migrations
                             Login = "patrol",
                             PasswordHash = "AQAAAAIAAYagAAAAEJaTsR64pp6Igk/NgiSK+R4ioUc9AUB375nT/1qv9yXNuYjjAiC+ZrI3sEhMLasdIQ==",
                             RoleId = 2
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Login = "adam",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJaTsR64pp6Igk/NgiSK+R4ioUc9AUB375nT/1qv9yXNuYjjAiC+ZrI3sEhMLasdIQ==",
+                            RoleId = 2
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Login = "kasia",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJaTsR64pp6Igk/NgiSK+R4ioUc9AUB375nT/1qv9yXNuYjjAiC+ZrI3sEhMLasdIQ==",
+                            RoleId = 2
                         });
                 });
 
@@ -134,6 +148,24 @@ namespace SalesPlatform.Infrastructure.Migrations
                             FlatNumber = "19",
                             Street = "Backer",
                             ZipCode = "93-400"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            City = "Oslo",
+                            Country = 12,
+                            FlatNumber = "102a",
+                            Street = "Lorem",
+                            ZipCode = "93-400"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            City = "Amsterdam",
+                            Country = 7,
+                            FlatNumber = "88",
+                            Street = "Lorem",
+                            ZipCode = "93-400"
                         });
                 });
 
@@ -177,6 +209,18 @@ namespace SalesPlatform.Infrastructure.Migrations
                             Id = 3,
                             EmailAddress = "damian@mail.com",
                             PhoneNumber = "987654321"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            EmailAddress = "adas@pl.com",
+                            PhoneNumber = "992003991"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            EmailAddress = "kasia@xp.com",
+                            PhoneNumber = "9908882991"
                         });
                 });
 
@@ -219,6 +263,27 @@ namespace SalesPlatform.Infrastructure.Migrations
                             Comment = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
                             ProductId = 2,
                             Rating = 3
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Comment = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+                            ProductId = 3,
+                            Rating = 5
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Comment = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+                            ProductId = 4,
+                            Rating = 5
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Comment = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+                            ProductId = 5,
+                            Rating = 1
                         });
                 });
 
@@ -297,7 +362,7 @@ namespace SalesPlatform.Infrastructure.Migrations
                             Id = 1,
                             Category = 0,
                             Condition = 0,
-                            Created = new DateTime(2023, 4, 25, 21, 30, 59, 319, DateTimeKind.Local).AddTicks(3654),
+                            Created = new DateTime(2023, 4, 26, 11, 10, 9, 697, DateTimeKind.Local).AddTicks(227),
                             CreatedBy = "Admin",
                             Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
                             Name = "Product name1",
@@ -312,7 +377,7 @@ namespace SalesPlatform.Infrastructure.Migrations
                             Id = 2,
                             Category = 4,
                             Condition = 0,
-                            Created = new DateTime(2023, 4, 25, 21, 30, 59, 319, DateTimeKind.Local).AddTicks(3664),
+                            Created = new DateTime(2023, 4, 26, 11, 10, 9, 697, DateTimeKind.Local).AddTicks(236),
                             CreatedBy = "Admin",
                             Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
                             Name = "Product name2",
@@ -320,6 +385,66 @@ namespace SalesPlatform.Infrastructure.Migrations
                             Quantity = 5,
                             StatusId = 1,
                             UserId = 1,
+                            VAT = false
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Category = 2,
+                            Condition = 0,
+                            Created = new DateTime(2023, 4, 26, 11, 10, 9, 697, DateTimeKind.Local).AddTicks(239),
+                            CreatedBy = "Admin",
+                            Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+                            Name = "Product name3",
+                            Price = 250m,
+                            Quantity = 15,
+                            StatusId = 1,
+                            UserId = 2,
+                            VAT = false
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Category = 3,
+                            Condition = 0,
+                            Created = new DateTime(2023, 4, 26, 11, 10, 9, 697, DateTimeKind.Local).AddTicks(241),
+                            CreatedBy = "Admin",
+                            Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+                            Name = "Product name 4",
+                            Price = 99m,
+                            Quantity = 1,
+                            StatusId = 1,
+                            UserId = 3,
+                            VAT = true
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Category = 1,
+                            Condition = 0,
+                            Created = new DateTime(2023, 4, 26, 11, 10, 9, 697, DateTimeKind.Local).AddTicks(243),
+                            CreatedBy = "Admin",
+                            Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+                            Name = "Product name 5",
+                            Price = 23m,
+                            Quantity = 99,
+                            StatusId = 1,
+                            UserId = 4,
+                            VAT = true
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Category = 4,
+                            Condition = 0,
+                            Created = new DateTime(2023, 4, 26, 11, 10, 9, 697, DateTimeKind.Local).AddTicks(246),
+                            CreatedBy = "Admin",
+                            Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+                            Name = "Product name 6",
+                            Price = 88m,
+                            Quantity = 9,
+                            StatusId = 1,
+                            UserId = 5,
                             VAT = false
                         });
                 });
@@ -416,7 +541,7 @@ namespace SalesPlatform.Infrastructure.Migrations
                             AccountId = 1,
                             AddressId = 1,
                             ContactId = 1,
-                            Created = new DateTime(2023, 4, 25, 21, 30, 59, 319, DateTimeKind.Local).AddTicks(3344),
+                            Created = new DateTime(2023, 4, 26, 11, 10, 9, 696, DateTimeKind.Local).AddTicks(9674),
                             CreatedBy = "Admin",
                             StatusId = 1
                         },
@@ -426,7 +551,37 @@ namespace SalesPlatform.Infrastructure.Migrations
                             AccountId = 2,
                             AddressId = 2,
                             ContactId = 2,
-                            Created = new DateTime(2023, 4, 25, 21, 30, 59, 319, DateTimeKind.Local).AddTicks(3375),
+                            Created = new DateTime(2023, 4, 26, 11, 10, 9, 696, DateTimeKind.Local).AddTicks(9710),
+                            CreatedBy = "Admin",
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AccountId = 3,
+                            AddressId = 3,
+                            ContactId = 3,
+                            Created = new DateTime(2023, 4, 26, 11, 10, 9, 696, DateTimeKind.Local).AddTicks(9713),
+                            CreatedBy = "Admin",
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            AccountId = 4,
+                            AddressId = 4,
+                            ContactId = 4,
+                            Created = new DateTime(2023, 4, 26, 11, 10, 9, 696, DateTimeKind.Local).AddTicks(9715),
+                            CreatedBy = "Admin",
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            AccountId = 5,
+                            AddressId = 5,
+                            ContactId = 5,
+                            Created = new DateTime(2023, 4, 26, 11, 10, 9, 696, DateTimeKind.Local).AddTicks(9717),
                             CreatedBy = "Admin",
                             StatusId = 1
                         });
@@ -462,7 +617,7 @@ namespace SalesPlatform.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.OwnsOne("SalesPlatform.Domain.ValueObjects.ProductDetail", "ProductDetails", b1 =>
+                    b.OwnsOne("SalesPlatform.Domain.ValueObjects.ProductDetail", "ProductDetail", b1 =>
                         {
                             b1.Property<int>("ProductId")
                                 .HasColumnType("int");
@@ -503,10 +658,38 @@ namespace SalesPlatform.Infrastructure.Migrations
                                     Color = "Red",
                                     Country = "England",
                                     ProducerName = "Pepco"
+                                },
+                                new
+                                {
+                                    ProductId = 3,
+                                    Color = "Blue",
+                                    Country = "Czech",
+                                    ProducerName = "Sparco"
+                                },
+                                new
+                                {
+                                    ProductId = 4,
+                                    Color = "White",
+                                    Country = "Norway",
+                                    ProducerName = "Nike"
+                                },
+                                new
+                                {
+                                    ProductId = 5,
+                                    Color = "Green",
+                                    Country = "Finland",
+                                    ProducerName = "Adidas"
+                                },
+                                new
+                                {
+                                    ProductId = 6,
+                                    Color = "Purple",
+                                    Country = "Denmark",
+                                    ProducerName = "Pepco"
                                 });
                         });
 
-                    b.Navigation("ProductDetails")
+                    b.Navigation("ProductDetail")
                         .IsRequired();
 
                     b.Navigation("User");
@@ -568,6 +751,24 @@ namespace SalesPlatform.Infrastructure.Migrations
                                     UserId = 2,
                                     FirstName = "Damian",
                                     LastName = "Boguslawski"
+                                },
+                                new
+                                {
+                                    UserId = 3,
+                                    FirstName = "Jan",
+                                    LastName = "Kowalski"
+                                },
+                                new
+                                {
+                                    UserId = 4,
+                                    FirstName = "Adam",
+                                    LastName = "Kozak"
+                                },
+                                new
+                                {
+                                    UserId = 5,
+                                    FirstName = "Katarzyna",
+                                    LastName = "Szybka"
                                 });
                         });
 

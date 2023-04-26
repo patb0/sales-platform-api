@@ -18,19 +18,21 @@ namespace SalesPlatform.Infrastructure.Persistence.Configurations
             builder.Property(a => a.Id)
                 .ValueGeneratedOnAdd();
 
-            builder.OwnsOne(d => d.ProductDetails)
+            //builder.OwnsOne(b => b.ProductDetail);
+
+            builder.OwnsOne(b => b.ProductDetail)
                 .Property(d => d.ProducerName)
                 .HasColumnName("ProducerName")
                 .HasMaxLength(20)
                 .IsRequired(false);
 
-            builder.OwnsOne(e => e.ProductDetails)
+            builder.OwnsOne(b => b.ProductDetail)
                 .Property(e => e.Country)
                 .HasColumnName("Country")
                 .HasMaxLength(20)
                 .IsRequired(false);
 
-            builder.OwnsOne(f => f.ProductDetails)
+            builder.OwnsOne(b => b.ProductDetail)
                 .Property(f => f.Color)
                 .HasColumnName("Color")
                 .HasMaxLength(20)

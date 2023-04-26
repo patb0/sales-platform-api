@@ -1,7 +1,9 @@
-﻿using SalesPlatform.Domain.Common;
+﻿using Microsoft.EntityFrameworkCore;
+using SalesPlatform.Domain.Common;
 using SalesPlatform.Domain.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,9 +12,9 @@ namespace SalesPlatform.Domain.ValueObjects
 {
     public class ProductDetail : ValueObject
     {
-        public string ProducerName { get; set; } = string.Empty;
-        public string Country { get; set; } = string.Empty;
-        public string Color { get; set; } = string.Empty;
+        public string ProducerName { get; set; }
+        public string Country { get; set; }
+        public string Color { get; set; }
 
         public ProductDetail(string producerName, string country, string color)
         {
