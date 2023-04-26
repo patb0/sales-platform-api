@@ -69,7 +69,7 @@ namespace SalesPlatform.Controllers
 
         [Authorize]
         [HttpPost("add")]
-        public async Task<ActionResult> AddProduct(AddProductCommand addProduct)
+        public async Task<ActionResult> AddProduct([FromBody]AddProductCommand addProduct)
         {
             var result = await Mediator.Send(addProduct);
 

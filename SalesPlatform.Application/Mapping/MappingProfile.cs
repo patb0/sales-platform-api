@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using SalesPlatform.Application.Accounts.Commands.Common;
-using SalesPlatform.Application.Opinions.Queries;
+using SalesPlatform.Application.Opinions.Queries.GetOpinionsByProductId;
 using SalesPlatform.Application.Products.Commands.AddProduct;
 using SalesPlatform.Application.Products.Queries.GetProductBasicDetailBySearchKey;
 using SalesPlatform.Application.Products.Queries.ViewModel;

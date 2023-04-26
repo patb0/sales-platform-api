@@ -1,12 +1,15 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using SalesPlatform.Application.Opinions.Queries;
+using SalesPlatform.Application.Opinions.Commands.AddProductOpinion;
+using SalesPlatform.Application.Opinions.Queries.GetOpinionsByProductId;
 
 namespace SalesPlatform.Controllers
 {
     [Route("api/opinion")]
     public class OpinionController : ApiBaseController
     {
+
         [HttpGet("{productId}")]
         public async Task<ActionResult> GetOpinionsByProductId(int productId)
         {
@@ -17,6 +20,15 @@ namespace SalesPlatform.Controllers
                 });
 
             return Ok(opinions);
+        }
+
+        [Authorize]
+        [HttpPost("add")]
+        public async Task<ActionResult<int>> AddProductOpinion([FromBody]AddProductOpinionCommand productOpinion)
+        {
+            var result = Mediator.Send(productOpinion);
+
+            return Ok(result.Result);
         }
     }
 }

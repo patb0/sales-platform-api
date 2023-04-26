@@ -347,6 +347,7 @@ namespace SalesPlatform.Infrastructure.Persistence
                         Comment = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
                         Rating = 5,
                         ProductId = 1,
+                        AddedBy = "Jan Kowalski",
                     },
                     new Opinion
                     {
@@ -354,6 +355,7 @@ namespace SalesPlatform.Infrastructure.Persistence
                         Comment = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
                         Rating = 3,
                         ProductId = 2,
+                        AddedBy = "Adam Kozak",
                     },
                     new Opinion
                     {
@@ -361,6 +363,7 @@ namespace SalesPlatform.Infrastructure.Persistence
                         Comment = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
                         Rating = 5,
                         ProductId = 3,
+                        AddedBy = "Patryk Boguslawski",
                     },
                     new Opinion
                     {
@@ -368,6 +371,7 @@ namespace SalesPlatform.Infrastructure.Persistence
                         Comment = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
                         Rating = 5,
                         ProductId = 4,
+                        AddedBy = "Katarzyna Szybka",
                     },
                     new Opinion
                     {
@@ -375,6 +379,7 @@ namespace SalesPlatform.Infrastructure.Persistence
                         Comment = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
                         Rating = 1,
                         ProductId = 5,
+                        AddedBy = "Damian Boguslawski",
                     });
             });
         }

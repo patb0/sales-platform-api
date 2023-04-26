@@ -14,19 +14,24 @@ namespace SalesPlatform.Application.Products.Commands.AddProduct
     {
         private readonly IApplicationDbContext _context;
         private readonly IMapper _mapper;
-        public AddProductCommandHandler(IApplicationDbContext context, IMapper mapper)
+        private readonly ICurrentUserService _currentUser;
+
+        public AddProductCommandHandler(IApplicationDbContext context, IMapper mapper, ICurrentUserService currentUser)
         {
             _context = context;
             _mapper = mapper;
+            _currentUser = currentUser;
         }
 
         public async Task<int> Handle(AddProductCommand request, CancellationToken cancellationToken)
         {
             var product = _mapper.Map<Product>(request);
+            product.UserId = _currentUser.UserId;
 
-            Console.ReadKey();
+            _context.Products.Add(product);
+            _context.SaveChangesWithAuditable();
 
-            return 1;
+            return product.Id;
         }
     }
 }

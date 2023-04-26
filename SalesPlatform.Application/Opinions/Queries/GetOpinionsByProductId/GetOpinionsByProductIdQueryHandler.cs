@@ -9,12 +9,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SalesPlatform.Application.Opinions.Queries
+namespace SalesPlatform.Application.Opinions.Queries.GetOpinionsByProductId
 {
     public class GetOpinionsByProductIdQueryHandler : IRequestHandler<GetOpinionsByProductIdQuery, OpinionDto>
     {
         private readonly IApplicationDbContext _context;
         private readonly IMapper _mapper;
+
         public GetOpinionsByProductIdQueryHandler(IApplicationDbContext context, IMapper mapper)
         {
             _context = context;
@@ -36,7 +37,7 @@ namespace SalesPlatform.Application.Opinions.Queries
             var opinionsVM = _mapper.Map<ICollection<OpinionViewModel>>(opinions);
 
             //rating avg
-            var averageRating = 0;
+            float averageRating = 0;
 
             foreach (var opinion in opinionsVM)
             {

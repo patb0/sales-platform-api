@@ -27,8 +27,4 @@
     <ProjectReference Include="..\SalesPlatform.Domain\SalesPlatform.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Opinions\Commands\" />
-  </ItemGroup>
-
 </Project>
