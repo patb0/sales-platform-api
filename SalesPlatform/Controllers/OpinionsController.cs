@@ -7,7 +7,7 @@ using SalesPlatform.Application.Opinions.Queries.GetOpinionsByProductId;
 namespace SalesPlatform.Controllers
 {
     [Route("api/opinion")]
-    public class OpinionController : ApiBaseController
+    public class OpinionsController : ApiBaseController
     {
 
         [HttpGet("{productId}")]
