@@ -16,7 +16,7 @@ namespace SalesPlatform.Controllers
 {
     [Route("api/account")]
     [ApiController]
-    public class AccountController : ApiBaseController
+    public class AccountsController : ApiBaseController
     {
         [HttpPost("register")]
         public async Task<ActionResult> Register([FromBody]RegisterUserCommand registerUser)

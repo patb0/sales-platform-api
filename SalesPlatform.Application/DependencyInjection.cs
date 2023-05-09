@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using SalesPlatform.Application.Accounts.Commands.LoginUser;
 using SalesPlatform.Application.Accounts.Commands.RegisterUser;
+using SalesPlatform.Application.Common;
 using SalesPlatform.Application.Common.Behaviours;
 using SalesPlatform.Application.Interfaces;
 using SalesPlatform.Application.Services;
@@ -38,8 +39,14 @@ namespace SalesPlatform.Application
             services.AddScoped<IPasswordHasher<Account>, PasswordHasher<Account>>();
             services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 
-            //added image dependency
-            services.AddScoped<IImageService, ImageService>();
+            //add image dependency
+            services.AddScoped<IImageUpload, ImageService>();
+            services.AddScoped<IImageDelete, ImageService>();
+
+            //add cloudinary settings from appsettings.json
+            var cloudinarySettings = new CloudinarySettings();
+            configuration.GetSection("CloudinarySeetings").Bind(cloudinarySettings);
+            services.AddSingleton(cloudinarySettings);
 
             //authentication variables from appsettings.json
             var authenticationSettings = new AuthenticationSettings();

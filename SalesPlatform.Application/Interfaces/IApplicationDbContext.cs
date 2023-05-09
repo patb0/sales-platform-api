@@ -18,6 +18,7 @@ namespace SalesPlatform.Application.Interfaces
         DbSet<Address> Addresses { get; set; }
         DbSet<Contact> Contacts { get; set; }
         DbSet<Opinion> Opinions { get; set; }
+        DbSet<Image> Images { get; set; }
 
         int SaveChangesWithAuditable();
         int SaveChanges();

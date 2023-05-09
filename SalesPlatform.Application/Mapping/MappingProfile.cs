@@ -29,11 +29,9 @@ namespace SalesPlatform.Application.Mapping
                 .ForMember(a => a.ProducerName, opt => opt.MapFrom(src => src.ProductDetail.ProducerName));
 
             //product commands
-            CreateMap<AddProductCommand, Product>()
-                .ForPath(a => a.ProductDetail, opt => opt.MapFrom(src => new ProductDetail(src.ProducerName, src.Country, src.Color)));
-                //.ForMember(a => a.ProductDetail.ProducerName, opt => opt.MapFrom(src => src.ProducerName))
-                //.ForPath(b => b.ProductDetail.Country, opt => opt.MapFrom(src => src.Country))
-                //.ForPath(c => c.ProductDetail.Color, opt => opt.MapFrom(src => src.Color));
+            CreateMap<AddProductDto, Product>()
+                .ForPath(a => a.ProductDetail, opt => opt.MapFrom(src => 
+                    new ProductDetail(src.ProducerName, src.Country, src.Color)));
 
             //register user
             CreateMap<AddressDto, Address>();

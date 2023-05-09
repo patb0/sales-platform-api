@@ -67,11 +67,15 @@ namespace SalesPlatform.Controllers
             return Ok(products);
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpPost("add")]
-        public async Task<ActionResult> AddProduct([FromBody]AddProductCommand addProduct)
+        public async Task<ActionResult> AddProduct([FromQuery]AddProductDto product)
         {
-            var result = await Mediator.Send(addProduct);
+            var result = await Mediator.Send(
+                new AddProductCommand
+                {
+                    Product = product, 
+                });
 
             return Ok(result);
         }

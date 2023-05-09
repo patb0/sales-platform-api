@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SalesPlatform.Application.Interfaces
 {
-    internal interface IImageUpload
+    public interface IImageUpload
     {
         Task<ImageUploadResult> UploadImageAsync(IFormFile file);
     }

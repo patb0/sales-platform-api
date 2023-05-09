@@ -22,13 +22,11 @@ namespace SalesPlatform.Domain.Entities
         public int Quantity { get; set; }
         public string Description { get; set; }
         public bool VAT { get; set; }
-        //to do:
-        //-photos (main, gallery)
 
 
         public int UserId { get; set; }
         public User User { get; set; }
-
         public ICollection<Opinion> Opinions { get; set; }
+        public ICollection<Image>? Images { get; set; }
     }
 }

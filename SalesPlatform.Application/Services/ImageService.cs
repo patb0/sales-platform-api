@@ -15,12 +15,12 @@ namespace SalesPlatform.Application.Services
     public class ImageService : IImageUpload, IImageDelete
     {
         private readonly Cloudinary _cloudinary;
-        public ImageService(IOptions<CloudinarySettings> cloudinarySettings)
+        public ImageService(CloudinarySettings cloudinarySettings)
         {
             var cloudinaryAccount = new Account(
-                cloudinarySettings.Value.CloudName,
-                cloudinarySettings.Value.ApiKey,
-                cloudinarySettings.Value.ApiSecret
+                cloudinarySettings.CloudName,
+                cloudinarySettings.ApiKey,
+                cloudinarySettings.ApiSecret
                 );
 
             _cloudinary = new Cloudinary(cloudinaryAccount);
