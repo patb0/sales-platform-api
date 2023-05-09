@@ -9,6 +9,7 @@ using SalesPlatform.Application.Accounts.Commands.LoginUser;
 using SalesPlatform.Application.Accounts.Commands.RegisterUser;
 using SalesPlatform.Application.Common.Behaviours;
 using SalesPlatform.Application.Interfaces;
+using SalesPlatform.Application.Services;
 using SalesPlatform.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -37,6 +38,8 @@ namespace SalesPlatform.Application
             services.AddScoped<IPasswordHasher<Account>, PasswordHasher<Account>>();
             services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 
+            //added image dependency
+            services.AddScoped<IImageService, ImageService>();
 
             //authentication variables from appsettings.json
             var authenticationSettings = new AuthenticationSettings();
