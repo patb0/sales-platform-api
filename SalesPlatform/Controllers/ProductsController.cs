@@ -69,15 +69,24 @@ namespace SalesPlatform.Controllers
 
         //[Authorize]
         [HttpPost("add")]
-        public async Task<ActionResult> AddProduct([FromQuery]AddProductDto product)
+        public async Task<ActionResult> AddProduct([FromForm]AddProductDto product, [FromQuery]ICollection<IFormFile> images)
         {
             var result = await Mediator.Send(
                 new AddProductCommand
                 {
-                    Product = product, 
+                    Product = product,
+                    Images = images
                 });
 
             return Ok(result);
+        }
+
+        [HttpPost("test")]
+        public async Task<ActionResult> Test(string x, [FromQuery]ICollection<IFormFile> file)
+        {
+            Console.ReadKey();
+
+            return Ok(file);
         }
 
         [Authorize]
