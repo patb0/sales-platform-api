@@ -37,6 +37,9 @@ namespace SalesPlatform.Application.Products.Commands.AddProduct
 
             //todo
             //add range for images (max 5)
+            RuleFor(h => h.Images)
+                .Must(x => x.Count <= 5)
+                .WithMessage("Max 5 images allowed");
         }
     }
 }
