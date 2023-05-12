@@ -6,12 +6,11 @@ using SalesPlatform.Application.Opinions.Queries.GetOpinionsByProductId;
 
 namespace SalesPlatform.Controllers
 {
-    [Route("api/opinion")]
     public class OpinionsController : ApiBaseController
     {
 
         [HttpGet("{productId}")]
-        public async Task<ActionResult> GetOpinionsByProductId(int productId)
+        public async Task<ActionResult> GetOpinionsByProductId([FromRoute]int productId)
         {
             var opinions = await Mediator.Send(
                 new GetOpinionsByProductIdQuery

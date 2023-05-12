@@ -12,7 +12,6 @@ using SalesPlatform.Application.Products.Commands.DeleteProduct;
 
 namespace SalesPlatform.Controllers
 {
-    [Route("api/products")]
     public class ProductsController : ApiBaseController
     {
         [HttpGet("full-detail")]
@@ -81,7 +80,6 @@ namespace SalesPlatform.Controllers
             return Ok($"Product with id: {result} was added!");
         }
 
-        //to change
         [Authorize]
         [HttpPatch("{id}")]
         public async Task<ActionResult> UpdateProduct([FromRoute]int id, [FromBody]UpdateProductDto updateProduct)

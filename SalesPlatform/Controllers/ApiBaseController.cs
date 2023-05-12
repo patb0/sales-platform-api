@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 namespace SalesPlatform.Controllers
 {
     [ApiController]
+    [Route("api/[controller]")]
     public class ApiBaseController : ControllerBase
     {
         private IMediator _mediator;

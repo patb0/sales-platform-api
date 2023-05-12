@@ -27,6 +27,7 @@ namespace SalesPlatform.Application.Products.Queries.GetProductBasicDetail
         {
             var products = await _context.Products
                 .Include(i => i.Images)
+                .Where(x => x.StatusId == 1)
                 .ToListAsync();
 
             if(products.Count() == 0)

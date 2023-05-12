@@ -27,7 +27,7 @@ namespace SalesPlatform.Application.Products.Queries.GetProductFullDetailById
             var product = await _context.Products
                 .Include(p => p.ProductDetail)
                 .Include(p => p.Images)
-                .Where(i => i.Id == request.ProductId)
+                .Where(i => i.Id == request.ProductId && i.StatusId == 1)
                 .FirstOrDefaultAsync(cancellationToken);
 
             if (product == null)

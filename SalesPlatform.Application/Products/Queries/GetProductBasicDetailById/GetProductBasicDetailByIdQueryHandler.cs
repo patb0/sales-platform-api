@@ -26,7 +26,8 @@ namespace SalesPlatform.Application.Products.Queries.GetProductBasicDetailById
         {
             var product = await _context.Products
                 .Include(i => i.Images)
-                .Where(i => i.Id == request.ProductId)
+                .Where(i => i.Id == request.ProductId
+                && i.StatusId == 1)
                 .FirstOrDefaultAsync(cancellationToken);
 
             if(product == null)

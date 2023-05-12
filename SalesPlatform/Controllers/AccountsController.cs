@@ -14,8 +14,6 @@ using System.Security.Claims;
 
 namespace SalesPlatform.Controllers
 {
-    [Route("api/account")]
-    [ApiController]
     public class AccountsController : ApiBaseController
     {
         [HttpPost("register")]
