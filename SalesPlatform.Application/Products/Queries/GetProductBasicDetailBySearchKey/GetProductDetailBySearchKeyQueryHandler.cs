@@ -29,6 +29,7 @@ namespace SalesPlatform.Application.Products.Queries.GetProductBasicDetailBySear
             var products = await _context.Products
                 .Where(a => a.Name.Contains(request.SearchKey)
                 || a.ProductDetail.ProducerName.Contains(request.SearchKey))
+                .Include(i => i.Images)
                 .ToListAsync();
 
             if (products.Count() == 0)

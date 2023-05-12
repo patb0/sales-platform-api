@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Identity;
 using SalesPlatform.Application.Accounts.Commands.Common;
 using SalesPlatform.Application.Opinions.Queries.GetOpinionsByProductId;
 using SalesPlatform.Application.Products.Commands.AddProduct;
@@ -22,13 +23,15 @@ namespace SalesPlatform.Application.Mapping
             CreateMap<Product, ProductFullDetailViewModel>()
                 .ForMember(a => a.ProducerName, opt => opt.MapFrom(src => src.ProductDetail.ProducerName))
                 .ForMember(b => b.Color, opt => opt.MapFrom(src => src.ProductDetail.Color))
-                .ForMember(c => c.Country, opt => opt.MapFrom(src => src.ProductDetail.Country));
+                .ForMember(c => c.Country, opt => opt.MapFrom(src => src.ProductDetail.Country))
+                .ForMember(d => d.Images, opt => opt.MapFrom(src => src.Images.Select(x => x.Url)));
 
             CreateMap<Product, ProductBasicDetailViewModel>()
-                .ForMember(a => a.MainImage, opt => opt.MapFrom(src => src.Images.FirstOrDefault()));
+                .ForMember(a => a.Image, opt => opt.MapFrom(src => src.Images.Select(x => x.Url).FirstOrDefault()));
 
             CreateMap<Product, ProductDetailBySearchKeyViewModel>()
-                .ForMember(a => a.ProducerName, opt => opt.MapFrom(src => src.ProductDetail.ProducerName));
+                .ForMember(a => a.ProducerName, opt => opt.MapFrom(src => src.ProductDetail.ProducerName))
+                .ForMember(b => b.Image, opt => opt.MapFrom(src => src.Images.Select(x => x.Url).FirstOrDefault()));
 
             //product commands
             CreateMap<AddProductDto, Product>()

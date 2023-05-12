@@ -20,6 +20,6 @@ namespace SalesPlatform.Application.Products.Queries.ViewModel
         public string Category { get; set; }
         public string Description { get; set; }
         public bool VAT { get; set; }
-        //public string Photos { get; set; }
+        public ICollection<string> Images { get; set; }
     }
 }

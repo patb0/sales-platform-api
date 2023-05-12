@@ -10,9 +10,9 @@ namespace SalesPlatform.Application.Accounts.Commands.RegisterUser
 {
     public class RegisterUserCommand : IRequest<int>
     {
-        public UserDto UserDto { get; set; }
-        public AddressDto AddressDto { get; set; }
-        public ContactDto ContactDto { get; set; }
-        public AccountDto AccountDto { get; set; }
+        public UserDto UserData { get; set; }
+        public AddressDto Address { get; set; }
+        public ContactDto Contact { get; set; }
+        public AccountDto Account { get; set; }
     }
 }

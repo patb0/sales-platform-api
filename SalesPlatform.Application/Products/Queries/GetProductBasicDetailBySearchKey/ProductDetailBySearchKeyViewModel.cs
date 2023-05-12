@@ -13,5 +13,6 @@ namespace SalesPlatform.Application.Products.Queries.GetProductBasicDetailBySear
         public string Category { get; set; }
         public decimal Price { get; set; }
         public string ProducerName { get; set; }
+        public string Image { get; set; }
     }
 }

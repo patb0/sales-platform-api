@@ -18,50 +18,50 @@ namespace SalesPlatform.Application.Accounts.Commands.RegisterUser
             _context = context;
 
             //validation for contact
-            RuleFor(x => x.ContactDto.EmailAddress)
+            RuleFor(x => x.Contact.EmailAddress)
                 .NotEmpty()
                 .EmailAddress();
 
-            RuleFor(x => x.ContactDto.PhoneNumber)
+            RuleFor(x => x.Contact.PhoneNumber)
                 .NotEmpty()
                 .MaximumLength(15);
 
             //validation for address
-            RuleFor(x => x.AddressDto.Country).NotEmpty();
-            RuleFor(x => x.AddressDto.City)
+            RuleFor(x => x.Address.Country).NotEmpty();
+            RuleFor(x => x.Address.City)
                 .NotEmpty()
                 .MaximumLength(20);
 
-            RuleFor(x => x.AddressDto.ZipCode)
+            RuleFor(x => x.Address.ZipCode)
                 .NotEmpty()
                 .MaximumLength(10);
 
-            RuleFor(x => x.AddressDto.City)
+            RuleFor(x => x.Address.City)
                .NotEmpty()
                .MaximumLength(20);
 
-            RuleFor(x => x.AddressDto.Street)
+            RuleFor(x => x.Address.Street)
                 .NotEmpty()
                 .MaximumLength(20);
 
-            RuleFor(x => x.AddressDto.FlatNumber)
+            RuleFor(x => x.Address.FlatNumber)
                 .NotEmpty()
                 .MaximumLength(10);
 
             //validation for account
-            RuleFor(x => x.AccountDto.Login)
+            RuleFor(x => x.Account.Login)
                 .MinimumLength(6)
                 .MaximumLength(20)
                 .NotEmpty();
 
-            RuleFor(x => x.AccountDto.Password)
+            RuleFor(x => x.Account.Password)
                 .MinimumLength(6)
                 .MaximumLength(20)
                 .NotEmpty();
 
-            RuleFor(x => x.AccountDto.PasswordConfirm).Equal(y => y.AccountDto.Password);
+            RuleFor(x => x.Account.PasswordConfirm).Equal(y => y.Account.Password);
 
-            RuleFor(x => x.AccountDto.Login)
+            RuleFor(x => x.Account.Login)
                 .Custom((value, context) =>
                 {
                     var loginInUse = _context.Accounts.Any(y => y.Login == value);
@@ -72,17 +72,17 @@ namespace SalesPlatform.Application.Accounts.Commands.RegisterUser
                 });
 
             //validation for user details
-            RuleFor(x => x.UserDto.FirstName)
+            RuleFor(x => x.UserData.FirstName)
                 .NotEmpty()
                 .MinimumLength(3)
                 .MaximumLength(20);
 
-            RuleFor(x => x.UserDto.LastName)
+            RuleFor(x => x.UserData.LastName)
                 .NotEmpty()
                 .MinimumLength(3)
                 .MaximumLength(20);
 
-            RuleFor(x => x.UserDto.NIP)
+            RuleFor(x => x.UserData.NIP)
                 .MaximumLength(10);
         }
     }

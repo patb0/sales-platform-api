@@ -30,15 +30,15 @@ namespace SalesPlatform.Application.Accounts.Commands.RegisterUser
             var role = _context.Roles.Where(x => x.Name == "User").FirstOrDefault();
 
             //add user address
-            var newAddress = _mapper.Map<Address>(request.AddressDto);
+            var newAddress = _mapper.Map<Address>(request.Address);
 
             //add user contact
-            var newContact = _mapper.Map<Contact>(request.ContactDto);
+            var newContact = _mapper.Map<Contact>(request.Contact);
 
             //user account (login + password)
-            var newAccount = _mapper.Map<Account>(request.AccountDto);
+            var newAccount = _mapper.Map<Account>(request.Account);
 
-            var hashedPassword = _passwordHasher.HashPassword(newAccount, request.AccountDto.Password);
+            var hashedPassword = _passwordHasher.HashPassword(newAccount, request.Account.Password);
             newAccount.PasswordHash = hashedPassword;
             newAccount.RoleId = role.Id;
             newAccount.Role = role;
@@ -52,7 +52,7 @@ namespace SalesPlatform.Application.Accounts.Commands.RegisterUser
             _context.SaveChanges();
 
             //user with simple data and all foreign keys
-            var newUser = _mapper.Map<User>(request.UserDto);
+            var newUser = _mapper.Map<User>(request.UserData);
             newUser.AddressId = newAddress.Id;
             newUser.ContactId = newContact.Id;
             newUser.AccountId = newAccount.Id;

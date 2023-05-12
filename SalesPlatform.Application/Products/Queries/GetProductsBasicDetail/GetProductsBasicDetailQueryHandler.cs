@@ -25,7 +25,9 @@ namespace SalesPlatform.Application.Products.Queries.GetProductBasicDetail
         }
         public async Task<ProductBasicDetailDto> Handle(GetProductsBasicDetailQuery request, CancellationToken cancellationToken)
         {
-            var products = await _context.Products.ToListAsync();
+            var products = await _context.Products
+                .Include(i => i.Images)
+                .ToListAsync();
 
             if(products.Count() == 0)
             {

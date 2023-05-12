@@ -25,6 +25,7 @@ namespace SalesPlatform.Application.Products.Queries.GetProductBasicDetailById
         public async Task<ProductBasicDetailViewModel> Handle(GetProductBasicDetailByIdQuery request, CancellationToken cancellationToken)
         {
             var product = await _context.Products
+                .Include(i => i.Images)
                 .Where(i => i.Id == request.ProductId)
                 .FirstOrDefaultAsync(cancellationToken);
 

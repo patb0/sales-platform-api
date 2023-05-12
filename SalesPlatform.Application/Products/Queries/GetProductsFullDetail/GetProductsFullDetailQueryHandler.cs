@@ -26,7 +26,10 @@ namespace SalesPlatform.Application.Products.Queries.GetProductsFullDetail
 
         public async Task<ProductFullDetailDto> Handle(GetProductsFullDetailQuery request, CancellationToken cancellationToken)
         {
-            var products = await _context.Products.Include(p => p.ProductDetail).ToListAsync();
+            var products = await _context.Products
+                .Include(p => p.ProductDetail)
+                .Include(i => i.Images)
+                .ToListAsync();
 
             if(products.Count() == 0)
             {
