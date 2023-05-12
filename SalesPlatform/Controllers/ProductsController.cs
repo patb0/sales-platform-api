@@ -12,7 +12,7 @@ using SalesPlatform.Application.Products.Commands.DeleteProduct;
 
 namespace SalesPlatform.Controllers
 {
-    [Route("api/product")]
+    [Route("api/products")]
     public class ProductsController : ApiBaseController
     {
         [HttpGet("full-detail")]
@@ -32,19 +32,19 @@ namespace SalesPlatform.Controllers
         }
 
         [HttpGet("{id}/full-detail")]
-        public async Task<ActionResult> GetProductFullDetailById(int id)
+        public async Task<ActionResult> GetProductFullDetailById([FromRoute]int id)
         {
             var product = await Mediator.Send(
-                new GetProductFullDetailByIdQuery 
-                { 
-                    ProductId = id 
+                new GetProductFullDetailByIdQuery
+                {
+                    ProductId = id
                 });
 
             return Ok(product);
         }
 
         [HttpGet("{id}/basic-detail")]
-        public async Task<ActionResult> GetProductBasicDetailById(int id)
+        public async Task<ActionResult> GetProductBasicDetailById([FromRoute] int id)
         {
             var product = await Mediator.Send(
                 new GetProductBasicDetailByIdQuery 
@@ -67,7 +67,7 @@ namespace SalesPlatform.Controllers
             return Ok(products);
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpPost("add")]
         public async Task<ActionResult> AddProduct([FromForm]AddProductDto product, [FromQuery]ICollection<IFormFile> images)
         {
@@ -78,20 +78,13 @@ namespace SalesPlatform.Controllers
                     Images = images
                 });
 
-            return Ok(result);
+            return Ok($"Product with id: {result} was added!");
         }
 
-        [HttpPost("test")]
-        public async Task<ActionResult> Test(string x, [FromQuery]ICollection<IFormFile> file)
-        {
-            Console.ReadKey();
-
-            return Ok(file);
-        }
-
+        //to change
         [Authorize]
         [HttpPatch("{id}")]
-        public async Task<ActionResult> UpdateProduct(int id, [FromBody]UpdateProductDto updateProduct)
+        public async Task<ActionResult> UpdateProduct([FromRoute]int id, [FromBody]UpdateProductDto updateProduct)
         {
             var result = await Mediator.Send(
                 new UpdateProductCommand 
@@ -104,7 +97,7 @@ namespace SalesPlatform.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteProduct(int id)
+        public async Task<ActionResult> DeleteProduct([FromRoute]int id)
         {
             var result = await Mediator.Send(
                 new DeleteProductCommand
@@ -112,7 +105,7 @@ namespace SalesPlatform.Controllers
                     Id = id 
                 });
 
-            return Ok();
+            return Ok("Successful, product was deleted!");
         }
     }
 }

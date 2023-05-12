@@ -24,7 +24,9 @@ namespace SalesPlatform.Application.Mapping
                 .ForMember(b => b.Color, opt => opt.MapFrom(src => src.ProductDetail.Color))
                 .ForMember(c => c.Country, opt => opt.MapFrom(src => src.ProductDetail.Country));
 
-            CreateMap<Product, ProductBasicDetailViewModel>();
+            CreateMap<Product, ProductBasicDetailViewModel>()
+                .ForMember(a => a.MainImage, opt => opt.MapFrom(src => src.Images.FirstOrDefault()));
+
             CreateMap<Product, ProductDetailBySearchKeyViewModel>()
                 .ForMember(a => a.ProducerName, opt => opt.MapFrom(src => src.ProductDetail.ProducerName));
 

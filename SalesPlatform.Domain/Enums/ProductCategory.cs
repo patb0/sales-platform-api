@@ -11,15 +11,10 @@ namespace SalesPlatform.Domain.Enums
 {
     public enum ProductCategory
     {
-        [EnumMember(Value = "Electronics")]
         Electronics,
-        [EnumMember(Value = "Sports")]
         Sports,
-        [EnumMember(Value = "Automotive")]
         Automotive,
-        [EnumMember(Value = "Fashion")]
         Fashion,
-        [EnumMember(Value = "Home")]
         Home,
     }
 }

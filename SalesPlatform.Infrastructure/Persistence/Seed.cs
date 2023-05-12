@@ -9,6 +9,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.WebRequestMethods;
 
 namespace SalesPlatform.Infrastructure.Persistence
 {
@@ -17,7 +18,7 @@ namespace SalesPlatform.Infrastructure.Persistence
 
         public static void SeedData(this ModelBuilder modelBuilder)
         {
-            //added roles
+            // Add roles
             modelBuilder.Entity<Role>(d =>
             {
                 d.HasData(
@@ -33,7 +34,7 @@ namespace SalesPlatform.Infrastructure.Persistence
                     });
             });
 
-            //added accounts
+            // Add accounts
             modelBuilder.Entity<Account>(d =>
             {
                 d.HasData(
@@ -74,7 +75,7 @@ namespace SalesPlatform.Infrastructure.Persistence
                     });
             });
 
-            //added customers
+            // Add customers
             modelBuilder.Entity<User>(d =>
                 {
                     d.HasData(
@@ -141,7 +142,7 @@ namespace SalesPlatform.Infrastructure.Persistence
                 }
             );
 
-            //added contacts
+            // Add contacts
             modelBuilder.Entity<Contact>(d =>
                 {
                     d.HasData(
@@ -178,7 +179,7 @@ namespace SalesPlatform.Infrastructure.Persistence
                 }
             );
 
-            //added addresses
+            // Add addresses
             modelBuilder.Entity<Address>(d =>
             {
                 d.HasData(
@@ -229,7 +230,7 @@ namespace SalesPlatform.Infrastructure.Persistence
                     });
             });
 
-            //added products
+            // Add products
             modelBuilder.Entity<Product>(d =>
             {
                 d.HasData(
@@ -337,7 +338,61 @@ namespace SalesPlatform.Infrastructure.Persistence
                     new { ProductId = 6, ProducerName = "Pepco", Country = Domain.Enums.Country.Denmark.ToString(), Color = "Purple" });
             });
 
-            //added opinions
+            //Add images
+            modelBuilder.Entity<Image>(d =>
+            {
+                d.HasData(
+                    new Image
+                    {
+                        Id = 1,
+                        Height = 500,
+                        Width = 500,
+                        Url = @"https://res.cloudinary.com/dshks90xq/image/upload/v1683881795/Electronics_h49ron.jpg",
+                        ProductId = 1,
+                    },
+                    new Image
+                    {
+                        Id = 2,
+                        Height = 500,
+                        Width = 500,
+                        Url = @"https://res.cloudinary.com/dshks90xq/image/upload/v1683881795/Home_ioiu3a.jpg",
+                        ProductId = 2,
+                    },
+                    new Image
+                    {
+                        Id = 3,
+                        Height = 500,
+                        Width = 500,
+                        Url = @"https://res.cloudinary.com/dshks90xq/image/upload/v1683881795/Home_ioiu3a.jpg",
+                        ProductId = 3,
+                    },
+                    new Image
+                    {
+                        Id = 4,
+                        Height = 500,
+                        Width = 500,
+                        Url = @"https://res.cloudinary.com/dshks90xq/image/upload/v1683881795/Fashion_eaiucr.jpg",
+                        ProductId = 4,
+                    },
+                    new Image
+                    {
+                        Id = 5,
+                        Height = 500,
+                        Width = 500,
+                        Url = @"https://res.cloudinary.com/dshks90xq/image/upload/v1683881794/Sports_pmdtmh.jpg",
+                        ProductId = 5,
+                    },
+                    new Image
+                    {
+                        Id = 6,
+                        Height = 500,
+                        Width = 500,
+                        Url = @"https://res.cloudinary.com/dshks90xq/image/upload/v1683881795/Home_ioiu3a.jpg",
+                        ProductId = 6,
+                    });
+            });
+
+            // Add opinions
             modelBuilder.Entity<Opinion>(d =>
             {
                 d.HasData(

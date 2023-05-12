@@ -27,6 +27,6 @@ namespace SalesPlatform.Domain.Entities
         public int UserId { get; set; }
         public User User { get; set; }
         public ICollection<Opinion> Opinions { get; set; }
-        public ICollection<Image>? Images { get; set; }
+        public ICollection<Image> Images { get; set; }
     }
 }

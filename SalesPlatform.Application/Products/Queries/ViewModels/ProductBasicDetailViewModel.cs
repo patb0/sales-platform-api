@@ -11,6 +11,9 @@ namespace SalesPlatform.Application.Products.Queries.ViewModel
         public string Category { get; set; }
         public string Name { get; set; }
         public string Price { get; set; }
-        //to do: rating average
+        public string MainImage { get; set; }
+
+        //to do: average rating for product
+        //public float AvgRating { get; set; }
     }
 }
