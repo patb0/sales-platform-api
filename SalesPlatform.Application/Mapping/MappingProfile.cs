@@ -5,6 +5,7 @@ using SalesPlatform.Application.Opinions.Queries.GetOpinionsByProductId;
 using SalesPlatform.Application.Products.Commands.AddProduct;
 using SalesPlatform.Application.Products.Queries.GetProductBasicDetailBySearchKey;
 using SalesPlatform.Application.Products.Queries.ViewModel;
+using SalesPlatform.Domain.Common;
 using SalesPlatform.Domain.Entities;
 using SalesPlatform.Domain.ValueObjects;
 using System;
@@ -35,14 +36,24 @@ namespace SalesPlatform.Application.Mapping
 
             //product commands
             CreateMap<AddProductDto, Product>()
-                .ForPath(a => a.ProductDetail, opt => opt.MapFrom(src => 
+                .IgnoreAllNonExisting()
+                .ForPath(a => a.ProductDetail, opt => opt.MapFrom(src =>
                     new ProductDetail(src.ProducerName, src.Country, src.Color)));
 
+
+
             //register user
-            CreateMap<AddressDto, Address>();
-            CreateMap<ContactDto, Contact>();
-            CreateMap<AccountDto, Account>();
+            CreateMap<AddressDto, Address>()
+                .IgnoreAllNonExisting();
+
+            CreateMap<ContactDto, Contact>()
+                .IgnoreAllNonExisting();
+
+            CreateMap<AccountDto, Account>()
+                .IgnoreAllNonExisting();
+
             CreateMap<UserDto, User>()
+                .IgnoreAllNonExisting()
                 .ForPath(a => a.UserName, opt => opt.MapFrom(src => new PersonName(src.FirstName, src.LastName)));
 
             //product opinions
