@@ -17,10 +17,12 @@ namespace SalesPlatform.Application.Products.Commands.DeleteProduct
         {
             _context = context;
         }
+
         public async Task<Unit> Handle(DeleteProductCommand request, CancellationToken cancellationToken)
         {
             var product = await _context.Products
                 .Include(i => i.ProductDetail)
+                .Include(i => i.Images)
                 .Where(x => x.Id == request.Id)
                 .FirstOrDefaultAsync(cancellationToken);
 
