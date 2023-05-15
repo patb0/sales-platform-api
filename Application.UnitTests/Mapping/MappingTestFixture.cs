@@ -10,8 +10,8 @@ namespace Application.UnitTests.Mapping
 {
     public class MappingTestFixture
     {
-        public IConfigurationProvider ConfigurationProvider { get; set; }
-        public IMapper Mapper { get; set; }
+        public IConfigurationProvider ConfigurationProvider { get; private set; }
+        public IMapper Mapper { get; private set; }
 
         public MappingTestFixture()
         {
