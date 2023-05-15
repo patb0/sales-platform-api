@@ -12,6 +12,7 @@ namespace Application.UnitTests.Common
     {
         protected readonly ApplicationDbContext _context;
         protected readonly Mock<ApplicationDbContext> _contextMock;
+
         public CommandTestBase()
         {
             _contextMock = ApplicationDbContextFactory.Create();

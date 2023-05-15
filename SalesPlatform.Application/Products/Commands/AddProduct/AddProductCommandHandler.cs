@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using SalesPlatform.Application.Exceptions;
 using SalesPlatform.Application.Interfaces;
 using SalesPlatform.Application.Services;
 using SalesPlatform.Domain.Entities;
@@ -37,6 +38,8 @@ namespace SalesPlatform.Application.Products.Commands.AddProduct
 
             _context.Products.Add(product);
             _context.SaveChangesWithAuditable();
+
+            
 
             //add images to entity
             var images = new List<Image>();

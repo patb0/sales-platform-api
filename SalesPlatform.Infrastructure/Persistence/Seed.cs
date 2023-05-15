@@ -15,7 +15,6 @@ namespace SalesPlatform.Infrastructure.Persistence
 {
     public static class Seed
     {
-
         public static void SeedData(this ModelBuilder modelBuilder)
         {
             // Add roles

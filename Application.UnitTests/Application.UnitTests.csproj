@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="FluentValidation.Validators.UnitTestExtension" Version="1.11.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.5" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.2" />
     <PackageReference Include="Moq" Version="4.18.4" />
@@ -28,6 +29,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SalesPlatform.Application\SalesPlatform.Application.csproj" />
+    <ProjectReference Include="..\SalesPlatform.Infrastructure\SalesPlatform.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
