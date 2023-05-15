@@ -63,10 +63,6 @@ namespace SalesPlatform.Application.Products.Commands.AddProduct
                 .NotEmpty()
                 .MaximumLength(20)
                 .WithMessage("Color cannot be null/empty and must have to 20 characters!");
-
-            
-
-            
         }
     }
 }

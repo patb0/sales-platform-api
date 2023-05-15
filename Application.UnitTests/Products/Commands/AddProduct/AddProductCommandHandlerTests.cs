@@ -47,8 +47,9 @@ namespace Application.UnitTests.Products.Commands.AddProduct
         }
 
         [Fact]
-        public async Task AddProductCommand_GivenValidRequest_ShouldInsertDirector()
+        public async Task AddProductCommandHandler_GivenValidRequest_ShouldInsertDirector()
         {
+            // arange
             var command = new AddProductCommand()
             {
                 Product = new AddProductDto()
@@ -66,16 +67,18 @@ namespace Application.UnitTests.Products.Commands.AddProduct
                 },
                 Images = new List<IFormFile>()
             };
-            
+
+            // act
             var result = await _handler.Handle(command, CancellationToken.None);
 
             var check = await _context.Products.FirstAsync(x => x.Id == result);
 
+            // assert
             Assert.NotNull(check);
         }
 
         [Fact]
-        public void AddProductCommand_GivenInvalidRequest_ShouldHaveValidationError()
+        public void AddProductCommandHandler_GivenInvalidRequest_ShouldHaveValidationError()
         {
             // arrange
             var command = new AddProductCommand()
@@ -104,7 +107,7 @@ namespace Application.UnitTests.Products.Commands.AddProduct
         }
 
         [Fact]
-        public void AddProductCommand_GivenInvalidRequest_ShouldNotHaveValidationError()
+        public void AddProductCommandHandler_GivenValidRequest_ShouldNotHaveValidationError()
         {
             // arrange
             var command = new AddProductCommand()

@@ -19,6 +19,5 @@ namespace Application.UnitTests.Common
 
             return currentUserMock;
         }
-            
     }
 }
