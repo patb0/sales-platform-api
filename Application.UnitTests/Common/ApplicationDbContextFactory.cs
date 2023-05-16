@@ -15,18 +15,9 @@ namespace Application.UnitTests.Common
     {
         public static Mock<ApplicationDbContext> Create()
         {
+            //mock 
             var MockDateTime = DateTimeFactory.MockDateTime().Object;
             var MockCurrentUser = CurrentUserFactory.MockCurrentUser().Object;
-            // mock for date time
-            //var dateTime = new DateTime(2023, 1, 1);
-            //var dateTimeMock = new Mock<IDateTime>();
-            //dateTimeMock.Setup(m => m.Now).Returns(dateTime);
-
-            //mock for current user
-            //var currentUserMock = new Mock<ICurrentUserService>();
-            //currentUserMock.Setup(m => m.UserRole).Returns("Admin");
-            //currentUserMock.Setup(m => m.IsAuthenticated).Returns(true);
-            //currentUserMock.Setup(m => m.UserName).Returns("Administrator");
 
             //use db in memory
             var options = new DbContextOptionsBuilder<ApplicationDbContext>()
