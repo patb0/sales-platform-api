@@ -27,7 +27,7 @@ namespace Application.UnitTests.Products.Queries.GetProductsFullDetail
         }
 
         [Fact]
-        public async Task CanGetProductsFullDetail()
+        public async Task GetProductsFullDetailQueryHandler_CanGetProductsFullDetail()
         {
             // arrange
             var query = new GetProductsFullDetailQuery();

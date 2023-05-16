@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SalesPlatform.Application.Products.Queries.GetProductBasicDetailById
+namespace SalesPlatform.Application.Products.Queries.GetProductFullDetailById
 {
-    public class GetProductBasicDetailByIdQueryValidator : AbstractValidator<GetProductBasicDetailByIdQuery>
+    public class GetProductFullDetailByIdQueryValidator : AbstractValidator<GetProductFullDetailByIdQuery>
     {
-        public GetProductBasicDetailByIdQueryValidator()
+        public GetProductFullDetailByIdQueryValidator()
         {
             RuleFor(a => a.ProductId)
                 .NotEmpty()
