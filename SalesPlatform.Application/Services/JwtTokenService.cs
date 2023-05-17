@@ -1,4 +1,5 @@
 ﻿using Microsoft.IdentityModel.Tokens;
+using SalesPlatform.Application.Interfaces;
 using SalesPlatform.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -9,17 +10,14 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SalesPlatform.Application.Accounts.Commands.LoginUser
+namespace SalesPlatform.Application.Services
 {
-    public static class GenerateUserJwt
-    {        
-        public static string CreateToken(User user, AuthenticationSettings authenticationSettings)
+    public class JwtTokenService : IGenerateJwtToken
+    {
+        public string Generate(User user, IAuthenticationSettings authenticationSettings)
         {
             var claims = new List<Claim>()
             {
-                //new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                //new Claim(ClaimTypes.Name, $"{user.UserName.FirstName} {user.UserName.LastName}"),
-                //new Claim(ClaimTypes.Role, user.Account.Role.Name),
                 new Claim("id", user.Id.ToString()),
                 new Claim("name", $"{user.UserName.FirstName} {user.UserName.LastName}"),
                 new Claim("role", user.Account.Role.Name),
@@ -34,7 +32,7 @@ namespace SalesPlatform.Application.Accounts.Commands.LoginUser
             var expires = DateTime.Now.AddDays(Convert.ToDouble(authenticationSettings.JwtExpireDays));
 
             var token = new JwtSecurityToken(
-                issuer : authenticationSettings.JwtIssuer,
+                issuer: authenticationSettings.JwtIssuer,
                 audience: authenticationSettings.JwtIssuer,
                 claims,
                 expires: expires,

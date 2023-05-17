@@ -32,4 +32,8 @@
     <ProjectReference Include="..\SalesPlatform.Infrastructure\SalesPlatform.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Accounts\Queries\" />
+  </ItemGroup>
+
 </Project>

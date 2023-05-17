@@ -17,7 +17,7 @@ namespace Application.UnitTests.Products.Queries.GetProductBasicDetailById
     public class GetProductBasicDetailByIdQueryHandlerTests : QueryTestFixtures
     {
         private readonly GetProductBasicDetailByIdQueryHandler _handler;
-        private readonly GetProductBasicDetailByIdQueryValidator _validator = new ();
+        private readonly GetProductBasicDetailByIdQueryValidator _validator;
         private readonly ApplicationDbContext _context;
         private readonly IMapper _mapper;
 
@@ -25,6 +25,7 @@ namespace Application.UnitTests.Products.Queries.GetProductBasicDetailById
         {
             _context = Context;
             _mapper = Mapper;
+            _validator = new GetProductBasicDetailByIdQueryValidator();
 
             _handler = new GetProductBasicDetailByIdQueryHandler(_context, _mapper);
         }

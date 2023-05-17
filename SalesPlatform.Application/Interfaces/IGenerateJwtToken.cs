@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace SalesPlatform.Application.Interfaces
 {
-    public interface IGenerateUserJwt
+    public interface IGenerateJwtToken
     {
-        string GenerateJwtToken(User user);
+        string Generate(User user, IAuthenticationSettings authenticationSettings);
     }
 }

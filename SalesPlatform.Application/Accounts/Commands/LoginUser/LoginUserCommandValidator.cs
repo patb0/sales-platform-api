@@ -13,14 +13,18 @@ namespace SalesPlatform.Application.Accounts.Commands.LoginUser
         public LoginUserCommandValidator()
         {
             RuleFor(x => x.Login)
+                .NotEmpty()
+                .NotNull()
                 .MinimumLength(6)
                 .MaximumLength(20)
-                .NotEmpty();
+                .WithMessage("Login is required and can have between 6-20 chars!");
 
             RuleFor(y => y.Password)
+                .NotEmpty()
+                .NotNull()
                 .MinimumLength(6)
                 .MaximumLength(20)
-                .NotEmpty();
+                .WithMessage("Password is required and can have between 6-20 chars!");
         }
     }
 }

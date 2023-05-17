@@ -1,9 +1,11 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileSystemGlobbing.Internal.PatternContexts;
 using Microsoft.IdentityModel.Tokens;
 using SalesPlatform.Application.Exceptions;
 using SalesPlatform.Application.Interfaces;
+using SalesPlatform.Application.Services;
 using SalesPlatform.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -19,15 +21,18 @@ namespace SalesPlatform.Application.Accounts.Commands.LoginUser
     {
         private readonly IApplicationDbContext _context;
         private readonly IPasswordHasher<User> _passwordHasher;
-        private readonly AuthenticationSettings _authenticationSettings;
+        private readonly IAuthenticationSettings _authenticationSettings;
+        private readonly IGenerateJwtToken _generateJwtToken;
 
         public LoginUserCommandHandler(IApplicationDbContext context,
             IPasswordHasher<User> passwordHasher,
-            AuthenticationSettings authenticationSettings)
+            IAuthenticationSettings authenticationSettings,
+            IGenerateJwtToken generateJwtToken)
         {
             _context = context;
             _passwordHasher = passwordHasher;
             _authenticationSettings = authenticationSettings;
+            _generateJwtToken = generateJwtToken;
         }
 
         public async Task<string> Handle(LoginUserCommand request, CancellationToken cancellationToken)
@@ -59,7 +64,7 @@ namespace SalesPlatform.Application.Accounts.Commands.LoginUser
                 throw new InvalidUserDataException();
             }
 
-            var userToken = GenerateUserJwt.CreateToken(user, _authenticationSettings);
+            var userToken = _generateJwtToken.Generate(user, _authenticationSettings);
 
             return userToken;
         }

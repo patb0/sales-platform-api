@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using SalesPlatform.Application.Interfaces;
 using SalesPlatform.Domain.Entities;
+using SalesPlatform.Domain.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,17 +23,20 @@ namespace SalesPlatform.Application.Opinions.Commands.AddProductOpinion
 
         public async Task<int> Handle(AddProductOpinionCommand request, CancellationToken cancellationToken)
         {
-            var productId = request.ProductId;
-            var rating = request.Rating;
-            var comment = request.Comment;
-            var addedBy = _currentUser.UserName;
+            var product = _context.Products.FirstOrDefault(p => p.Id == request.ProductId
+                || p.StatusId == 1);
+
+            if(product == null)
+            {
+                throw new NotFoundProductException();
+            }
 
             var newOpinion = new Opinion
             {
-                Rating = rating,
-                Comment = comment,
-                ProductId = productId,
-                AddedBy = addedBy,
+                Rating = request.Rating,
+                Comment = request.Comment,
+                ProductId = request.ProductId,
+                AddedBy = _currentUser.UserName,
             };
 
             _context.Opinions.Add(newOpinion);

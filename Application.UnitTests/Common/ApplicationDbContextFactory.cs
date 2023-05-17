@@ -33,85 +33,85 @@ namespace Application.UnitTests.Common
             context.Database.EnsureCreated();
 
             //add entities to db for tests
-            var account = new Account()
-            {
-                Id = 6,
-                Login = "patryk",
-                PasswordHash = "AQAAAAIAAYagAAAAEJaTsR64pp6Igk/NgiSK+R4ioUc9AUB375nT/1qv9yXNuYjjAiC+ZrI3sEhMLasdIQ==",
-                RoleId = 1,
-            };
-            context.Accounts.Add(account);
+            //var account = new Account()
+            //{
+            //    Id = 6,
+            //    Login = "patryk",
+            //    PasswordHash = "AQAAAAIAAYagAAAAEJaTsR64pp6Igk/NgiSK+R4ioUc9AUB375nT/1qv9yXNuYjjAiC+ZrI3sEhMLasdIQ==",
+            //    RoleId = 1,
+            //};
+            //context.Accounts.Add(account);
 
-            var contact = new Contact()
-            {
-                Id = 7,
-                PhoneNumber = "992003991",
-                EmailAddress = "adas@pl.com",
-            };
-            context.Contacts.Add(contact);
+            //var contact = new Contact()
+            //{
+            //    Id = 7,
+            //    PhoneNumber = "992003991",
+            //    EmailAddress = "adas@pl.com",
+            //};
+            //context.Contacts.Add(contact);
 
-            var address = new Address()
-            {
-                Id = 7,
-                Country = SalesPlatform.Domain.Enums.Country.Poland,
-                ZipCode = "00-000",
-                City = "Warsaw",
-                Street = "Kwiatowa",
-                FlatNumber = "1a",
-            };
-            context.Addresses.Add(address);
+            //var address = new Address()
+            //{
+            //    Id = 7,
+            //    Country = SalesPlatform.Domain.Enums.Country.Poland,
+            //    ZipCode = "00-000",
+            //    City = "Warsaw",
+            //    Street = "Kwiatowa",
+            //    FlatNumber = "1a",
+            //};
+            //context.Addresses.Add(address);
 
-            var image = new Image()
-            {
-                Id = 7,
-                Height = 500,
-                Width = 500,
-                Url = @"https://res.cloudinary.com/dshks90xq/image/upload/v1683881795/Electronics_h49ron.jpg",
-                ProductId = 7,
-            };
-            context.Images.Add(image);
+            //var image = new Image()
+            //{
+            //    Id = 7,
+            //    Height = 500,
+            //    Width = 500,
+            //    Url = @"https://res.cloudinary.com/dshks90xq/image/upload/v1683881795/Electronics_h49ron.jpg",
+            //    ProductId = 7,
+            //};
+            //context.Images.Add(image);
 
-            var opinion = new Opinion()
-            {
-                Id = 6,
-                Comment = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-                Rating = 5,
-                ProductId = 7,
-                AddedBy = "Patryk Boguslawski",
-            };
-            context.Opinions.Add(opinion);
+            //var opinion = new Opinion()
+            //{
+            //    Id = 6,
+            //    Comment = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            //    Rating = 5,
+            //    ProductId = 7,
+            //    AddedBy = "Patryk Boguslawski",
+            //};
+            //context.Opinions.Add(opinion);
 
-            var product = new Product()
-            {
-                Id = 7,
-                StatusId = 1,
-                Created = DateTime.Now,
-                CreatedBy = "Admin",
-                UserId = 6,
-                Condition = SalesPlatform.Domain.Enums.ProductCondition.New,
-                Category = SalesPlatform.Domain.Enums.ProductCategory.Electronics,
-                Name = "Product name6",
-                Price = 389,
-                Quantity = 1,
-                Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-                VAT = true,
-                ProductDetail = new SalesPlatform.Domain.ValueObjects.ProductDetail("Asus", "Poland", "Red")
-            };
-            context.Products.Add(product);
+            //var product = new Product()
+            //{
+            //    Id = 7,
+            //    StatusId = 1,
+            //    Created = DateTime.Now,
+            //    CreatedBy = "Admin",
+            //    UserId = 6,
+            //    Condition = SalesPlatform.Domain.Enums.ProductCondition.New,
+            //    Category = SalesPlatform.Domain.Enums.ProductCategory.Electronics,
+            //    Name = "Product name6",
+            //    Price = 389,
+            //    Quantity = 1,
+            //    Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            //    VAT = true,
+            //    ProductDetail = new SalesPlatform.Domain.ValueObjects.ProductDetail("Asus", "Poland", "Red")
+            //};
+            //context.Products.Add(product);
 
-            var user = new User()
-            {
-                Id = 6,
-                StatusId = 1,
-                Created = DateTime.Now,
-                CreatedBy = "Admin",
-                ContactId = 7,
-                AddressId = 7,
-                AccountId = 6,
-            };
-            context.Users.Add(user);
+            //var user = new User()
+            //{
+            //    Id = 6,
+            //    StatusId = 1,
+            //    Created = DateTime.Now,
+            //    CreatedBy = "Admin",
+            //    ContactId = 7,
+            //    AddressId = 7,
+            //    AccountId = 6,
+            //};
+            //context.Users.Add(user);
 
-            context.SaveChanges();
+            //context.SaveChanges();
 
             return mock;
         }

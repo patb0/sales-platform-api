@@ -16,7 +16,7 @@ namespace Application.UnitTests.Products.Queries.GetProductFullDetailById
     public class GetProductFullDetailByIdQueryHandlerTests : QueryTestFixtures
     {
         private readonly GetProductFullDetailByIdQueryHandler _handler;
-        private readonly GetProductFullDetailByIdQueryValidator _validator = new ();
+        private readonly GetProductFullDetailByIdQueryValidator _validator;
         private readonly ApplicationDbContext _context;
         private readonly IMapper _mapper;
 
@@ -24,6 +24,7 @@ namespace Application.UnitTests.Products.Queries.GetProductFullDetailById
         {
             _context = Context;
             _mapper = Mapper;
+            _validator = new GetProductFullDetailByIdQueryValidator();
 
             _handler = new GetProductFullDetailByIdQueryHandler(_context, _mapper);
         }
