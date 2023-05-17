@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using SalesPlatform.Application.Accounts.Commands.LoginUser;
 using SalesPlatform.Application.Accounts.Commands.RegisterUser;
 using SalesPlatform.Application.Common;
 using SalesPlatform.Application.Common.Behaviours;
@@ -35,9 +34,15 @@ namespace SalesPlatform.Application
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
-            //added IPasswordHasher
+            //add dependency for IPasswordHasher
             services.AddScoped<IPasswordHasher<Account>, PasswordHasher<Account>>();
             services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
+
+            //add dependecy for IAuthenticationSettings
+            services.AddScoped<IAuthenticationSettings, AuthenticationSettings>();
+
+            //add dependency for IGenerateJwtToken
+            services.AddScoped<IGenerateJwtToken, JwtTokenService>();
 
             //add image dependency
             services.AddScoped<IImageUpload, ImageService>();

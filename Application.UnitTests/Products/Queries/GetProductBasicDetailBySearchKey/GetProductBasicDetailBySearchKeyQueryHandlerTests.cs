@@ -18,11 +18,12 @@ namespace Application.UnitTests.Products.Queries.GetProductBasicDetailBySearchKe
         private readonly GetProductDetailBySearchKeyQueryHandler _handler;
         private readonly ApplicationDbContext _context;
         private readonly IMapper _mapper;
-        private readonly GetProductDetailBySearchKeyQueryValidator _validator = new();
+        private readonly GetProductDetailBySearchKeyQueryValidator _validator;
         public GetProductBasicDetailBySearchKeyQueryHandlerTests() : base()
         {
             _context = Context;
             _mapper = Mapper;
+            _validator = new GetProductDetailBySearchKeyQueryValidator();
 
             _handler = new GetProductDetailBySearchKeyQueryHandler(_context, _mapper);
         }

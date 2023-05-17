@@ -12,14 +12,20 @@ namespace SalesPlatform.Application.Opinions.Commands.AddProductOpinion
         public AddProductOpinionCommandValidator()
         {
             RuleFor(a => a.Rating)
+                .NotNull()
+                .NotEmpty()
                 .InclusiveBetween(1, 5)
-                .NotEmpty();
+                .WithMessage("Rating is required and must be between 1 and 5.");
 
             RuleFor(b => b.Comment)
-                .MaximumLength(1000);
+                .MaximumLength(1000)
+                .WithMessage("Comment can have to 1000 chars!");
 
             RuleFor(c => c.ProductId)
-                .NotEmpty();
+                .NotNull()
+                .NotEmpty()
+                .GreaterThan(0)
+                .WithMessage("Product Id is required.");
         }
     }
 }
