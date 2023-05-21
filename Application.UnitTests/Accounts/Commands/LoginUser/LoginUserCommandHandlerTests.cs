@@ -14,7 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Application.UnitTests.Accounts.Commands
+namespace Application.UnitTests.Accounts.Commands.LoginUser
 {
     public class LoginUserCommandHandlerTests : CommandTestBase
     {
@@ -40,10 +40,10 @@ namespace Application.UnitTests.Accounts.Commands
         public async Task LoginUserCommandHandler_GivenValidRequest_ShouldGenerateJwtToken(string login, string password)
         {
             // arrange
-            var command = new LoginUserCommand() 
-            { 
-                Login = login, 
-                Password = password 
+            var command = new LoginUserCommand()
+            {
+                Login = login,
+                Password = password
             };
 
             // act
@@ -69,7 +69,7 @@ namespace Application.UnitTests.Accounts.Commands
             var result = _handler.Handle(command, CancellationToken.None);
 
             // assert
-            Assert.ThrowsAnyAsync<InvalidUserDataException>(() => result); 
+            Assert.ThrowsAnyAsync<InvalidUserDataException>(() => result);
         }
 
         [Theory]
